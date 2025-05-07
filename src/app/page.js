@@ -152,20 +152,20 @@ export default function Home() {
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent to-accent-light animate-spin-slow" />
             <div className="absolute inset-[3px] rounded-full bg-background overflow-hidden">
-              {/* Replace with your own image */}
               <div className="w-full h-full bg-card-bg flex items-center justify-center">
                 <motion.div 
-                  className="text-accent w-full h-full"
+                  className="text-accent w-full h-full relative"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5, duration: 0.5 }}
                 >
                   <Image
-                  src="/logos/hero-img.jpeg"
-                  alt="Georges Gewargis"
-                  fill={true}
-                  className="object-cover"
-                />
+                    src="/logos/hero-img.jpeg"
+                    alt="Georges Gewargis"
+                    fill={true}
+                    sizes="(max-width: 768px) 100vw, 176px"
+                    className="object-cover"
+                  />
                 </motion.div>
               </div>
             </div>
@@ -258,7 +258,8 @@ export default function Home() {
                 <Image
                   src="/profile.png"
                   alt="Georges Gewargis"
-                  fill="fill"
+                  fill={true}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover rounded-xl"
                 />
             </motion.div>
