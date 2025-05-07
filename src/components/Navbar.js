@@ -35,6 +35,25 @@ const Navbar = () => {
     { name: 'Contact', href: '#contact' }
   ];
 
+  // Scroll to section function
+  const scrollToSection = (e, sectionId) => {
+    e.preventDefault();
+    const section = document.querySelector(sectionId);
+    if (section) {
+      // Close mobile menu if open
+      if (isOpen) setIsOpen(false);
+      
+      // Scroll with custom duration (lower = faster)
+      window.scrollTo({
+        top: section.offsetTop - 80, // Adjust offset as needed
+        behavior: 'smooth',
+        // This makes scrolling faster in supported browsers
+        // The lower the number, the faster the scroll
+        duration: 400 // Default is around 500-800ms
+      });
+    }
+  };
+
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-background/90 backdrop-blur-md border-b border-border-color' : 'py-5'}`}>
       <div className="container mx-auto px-4 md:px-6">
@@ -61,12 +80,13 @@ const Navbar = () => {
               <Link 
                 key={index} 
                 href={item.href}
+                onClick={(e) => scrollToSection(e, item.href)}
                 className="text-text-secondary hover:text-foreground transition-colors"
               >
                 <motion.div
                   whileHover={{ y: -3, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+                  transition={{ duration: 0.1, type: "spring", stiffness: 400 }}
                   style={{ display: "inline-block" }}
                   className="text-text-secondary hover:text-white"
                 >
@@ -74,14 +94,17 @@ const Navbar = () => {
                 </motion.div>
               </Link>
             ))}
-            <motion.button
-              className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md"
-              whileHover={{ y: -5, scale: 1.05, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)" }}
+            <motion.a
+              href="/projects/Georges Gewargis - Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md inline-block text-white"
+              whileHover={{ y: -5, scale: 1.05, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)", cursor: "pointer" }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
             >
               Resume
-            </motion.button>
+            </motion.a>
           </motion.div>
 
           {/* Mobile Navigation Button */}
@@ -116,8 +139,8 @@ const Navbar = () => {
                 <Link
                   key={index}
                   href={item.href}
+                  onClick={(e) => scrollToSection(e, item.href)}
                   className="text-text-secondary hover:text-foreground transition-colors py-2"
-                  onClick={() => setIsOpen(false)}
                 >
                   <motion.div
                     whileHover={{ x: 5 }}
@@ -130,14 +153,17 @@ const Navbar = () => {
                   </motion.div>
                 </Link>
               ))}
-              <motion.button 
-                className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md w-full transition-all"
+              <motion.a 
+                href="/projects/Georges Gewargis - Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md w-full transition-all inline-block text-center text-white"
                 whileHover={{ y: -3, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
               >
                 Resume
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
         )}
