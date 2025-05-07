@@ -38,19 +38,22 @@ const Navbar = () => {
   // Scroll to section function
   const scrollToSection = (e, sectionId) => {
     e.preventDefault();
-    const section = document.querySelector(sectionId);
+    
+    // Strip the # from the sectionId if present to ensure proper selector format
+    const targetId = sectionId.startsWith('#') ? sectionId : `#${sectionId}`;
+    const section = document.querySelector(targetId);
+    
     if (section) {
       // Close mobile menu if open
       if (isOpen) setIsOpen(false);
       
-      // Scroll with custom duration (lower = faster)
-      window.scrollTo({
-        top: section.offsetTop - 80, // Adjust offset as needed
-        behavior: 'smooth',
-        // This makes scrolling faster in supported browsers
-        // The lower the number, the faster the scroll
-        duration: 400 // Default is around 500-800ms
-      });
+      // Add a small delay on mobile to allow the menu to close
+      setTimeout(() => {
+        window.scrollTo({
+          top: section.offsetTop - 80, 
+          behavior: 'smooth'
+        });
+      }, isOpen ? 300 : 0); // Small delay only if menu was open
     }
   };
 
@@ -124,48 +127,61 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-card-bg border-b border-border-color"
-          >
-            <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-              {navItems.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.href}
-                  onClick={(e) => scrollToSection(e, item.href)}
-                  className="text-text-secondary hover:text-foreground transition-colors py-2"
-                >
-                  <motion.div
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
-                    style={{ display: "inline-block" }}
-                    className="text-text-secondary hover:text-white"
+          <>
+            {/* Dark overlay behind the menu */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.7 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black z-40"
+              onClick={() => setIsOpen(false)}
+            />
+
+            {/* Mobile Menu */}
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-card-bg border-b border-border-color relative z-50"
+            >
+              <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                {navItems.map((item, index) => (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    onClick={(e) => scrollToSection(e, item.href)}
+                    className="text-text-secondary hover:text-foreground transition-colors py-2"
                   >
-                    {item.name}
-                  </motion.div>
-                </Link>
-              ))}
-              <motion.a 
-                href="/projects/Georges Gewargis - Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md w-full transition-all inline-block text-center text-white"
-                whileHover={{ y: -3, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)" }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-              >
-                Resume
-              </motion.a>
-            </div>
-          </motion.div>
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+                      style={{ display: "inline-block" }}
+                      className="text-text-secondary hover:text-white"
+                    >
+                      {item.name}
+                    </motion.div>
+                  </Link>
+                ))}
+                <motion.a 
+                  href="/projects/Georges Gewargis - Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md w-full transition-all inline-block text-center text-white"
+                  whileHover={{ y: -3, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)" }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+                >
+                  Resume
+                </motion.a>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
