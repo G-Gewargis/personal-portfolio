@@ -231,7 +231,7 @@ export default function Home() {
             >
               <h3 className="text-xl font-bold mb-4">Who am I?</h3>
               <p className="text-text-secondary mb-4">
-                I&#39;m a passionate Computer Science student with a love for full-stack development. I&#39;ve worked on several personal and business-based projects over the span of many years, incorporating modern technologies and frameworks.
+                I&#39;m a passionate Computer Science student with a love for full-stack development. I&#39;ve built several personal and business projects using a wide range of modern technologies and frameworks.
               </p>
               <p className="text-text-secondary mb-4">
                 Outside of coding, I love playing video games, listening to music, skateboarding, basketball & the gym, and spending time with friends. 
