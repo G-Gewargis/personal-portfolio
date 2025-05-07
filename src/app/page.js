@@ -18,21 +18,21 @@ import { useRef, useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import AnimatedBackground from "@/components/AnimatedBackground";
 
-// Animation variants
+// Animation variants with mobile optimizations
 const fadeIn = {
   hidden: { opacity: 0 },
   visible: { 
     opacity: 1,
-    transition: { duration: 0.6 }
+    transition: { duration: 0.4 }
   },
 };
 
 const slideUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 10 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6 }
+    transition: { duration: 0.3 }
   },
 };
 
@@ -41,10 +41,34 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.1,
     },
   },
 };
+
+// Mobile detection for conditional animations
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add event listener
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+  
+  return isMobile;
+}
 
 export default function Home() {
   // Add state for contact form

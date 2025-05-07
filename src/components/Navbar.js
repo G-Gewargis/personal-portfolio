@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconMenu2, IconX } from '@tabler/icons-react';
@@ -9,15 +9,14 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   
-  // Handle scroll effect with optimized event listener
+  // Optimized scroll handler with throttling
   useEffect(() => {
     let ticking = false;
     
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const offset = window.scrollY;
-          setScrolled(offset > 50);
+          setScrolled(window.scrollY > 50);
           ticking = false;
         });
         ticking = true;
@@ -25,69 +24,60 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Navigation items - memoized to prevent re-creation on each render
-  const navItems = useMemo(() => [
+  // Memoized navigation items
+  const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' }
-  ], []);
+  ];
 
-  // Scroll to section function - memoized
+  // Memoized scroll function
   const scrollToSection = useCallback((e, sectionId) => {
     e.preventDefault();
     
-    // Strip the # from the sectionId if present to ensure proper selector format
     const targetId = sectionId.startsWith('#') ? sectionId : `#${sectionId}`;
     const section = document.querySelector(targetId);
     
     if (section) {
-      // Close mobile menu if open
       if (isOpen) setIsOpen(false);
       
-      // Add a small delay on mobile to allow the menu to close
       setTimeout(() => {
         window.scrollTo({
           top: section.offsetTop - 80, 
           behavior: 'smooth'
         });
-      }, isOpen ? 300 : 0); // Small delay only if menu was open
+      }, isOpen ? 300 : 0);
     }
   }, [isOpen]);
+
+  // Mobile optimized animation variants
+  const navVariants = {
+    hidden: { opacity: 0, x: 20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.3 } }
+  };
   
-  // Toggle menu function - memoized
-  const toggleMenu = useCallback(() => {
-    setIsOpen(prev => !prev);
-  }, []);
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: { opacity: 1, height: 'auto', transition: { duration: 0.2 } }
+  };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 duration-300 ${scrolled ? 'py-3 bg-background/90 backdrop-blur-md border-b border-border-color' : 'py-5'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 ${scrolled ? 'py-3 bg-background/90 backdrop-blur-md border-b border-border-color' : 'py-5'}`}
+         style={{ willChange: 'padding', transform: 'translateZ(0)' }}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link href="/" className="font-bold text-xl text-gradient">
-              Georges Gewargis
-            </Link>
-          </motion.div>
+          <Link href="/" className="font-bold text-xl text-gradient">
+            Georges Gewargis
+          </Link>
 
           {/* Desktop Navigation */}
-          <motion.div
-            className="hidden md:flex items-center space-x-8"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
               <Link 
                 key={index} 
@@ -99,7 +89,6 @@ const Navbar = () => {
                   whileHover={{ y: -3, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.1, type: "spring", stiffness: 400 }}
-                  style={{ display: "inline-block" }}
                   className="text-text-secondary hover:text-white"
                 >
                   {item.name}
@@ -111,57 +100,50 @@ const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md inline-block text-white"
-              whileHover={{ y: -5, scale: 1.05, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)", cursor: "pointer" }}
+              whileHover={{ y: -5, scale: 1.05, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)" }}
               whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+              transition={{ duration: 0.2 }}
             >
               Resume
             </motion.a>
-          </motion.div>
+          </div>
 
           {/* Mobile Navigation Button */}
-          <motion.div 
-            className="md:hidden"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 bg-card-bg rounded-lg"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
-            <button
-              onClick={toggleMenu}
-              className="p-2 bg-card-bg rounded-lg"
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-            >
-              {isOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
-            </button>
-          </motion.div>
+            {isOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - optimized for performance */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Dark overlay behind the menu */}
+            {/* Dark overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.7 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15 }}
               className="fixed inset-0 bg-black z-40"
-              onClick={toggleMenu}
+              onClick={() => setIsOpen(false)}
               style={{
-                touchAction: "none",
                 willChange: "opacity",
-                transform: "translateZ(0)"
+                transform: "translateZ(0)",
+                touchAction: "none"
               }}
             />
 
             {/* Mobile Menu */}
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
+              variants={mobileMenuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
               className="md:hidden bg-card-bg border-b border-border-color relative z-50"
               style={{
                 willChange: "opacity, height",
@@ -169,36 +151,29 @@ const Navbar = () => {
                 overflowY: "hidden"
               }}
             >
-              <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-                {navItems.map((item, index) => (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    onClick={(e) => scrollToSection(e, item.href)}
-                    className="text-text-secondary hover:text-foreground transition-colors py-2"
-                  >
-                    <motion.div
-                      whileHover={{ x: 5 }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
-                      style={{ display: "inline-block" }}
-                      className="text-text-secondary hover:text-white"
+              <div className="container mx-auto px-4 py-4">
+                <div className="flex flex-col space-y-4">
+                  {navItems.map((item, index) => (
+                    <Link
+                      key={index}
+                      href={item.href}
+                      onClick={(e) => scrollToSection(e, item.href)}
+                      className="text-text-secondary hover:text-foreground py-2"
                     >
-                      {item.name}
-                    </motion.div>
-                  </Link>
-                ))}
-                <motion.a 
-                  href="/projects/Georges Gewargis - Resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md w-full transition-all inline-block text-center text-white"
-                  whileHover={{ y: -3, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)" }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                >
-                  Resume
-                </motion.a>
+                      <div className="text-text-secondary hover:text-white">
+                        {item.name}
+                      </div>
+                    </Link>
+                  ))}
+                  <a 
+                    href="/projects/Georges Gewargis - Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md w-full text-center text-white"
+                  >
+                    Resume
+                  </a>
+                </div>
               </div>
             </motion.div>
           </>
