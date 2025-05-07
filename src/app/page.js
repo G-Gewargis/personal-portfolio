@@ -234,7 +234,7 @@ export default function Home() {
                 I&#39;m a passionate Computer Science student with a love for full-stack development. I&#39;ve built several personal and business projects using a wide range of modern technologies and frameworks.
               </p>
               <p className="text-text-secondary mb-4">
-                Outside of coding, I love playing video games, listening to music, skateboarding, basketball & the gym, and spending time with friends. 
+              Outside of coding, I enjoy playing video games, listening to music, skateboarding, playing basketball, going to the gym, and spending time with friends. 
               </p>
               <div className="grid grid-cols-2 gap-4 mt-6">
                 <div>
