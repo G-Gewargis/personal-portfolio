@@ -63,8 +63,8 @@ export default function Home() {
           {/* Profile Image with animated border */}
           <motion.div 
             className="relative mx-auto w-32 h-32 mb-6 rounded-full overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent to-accent-light animate-spin-slow" />
             <div className="absolute inset-[3px] rounded-full bg-background overflow-hidden">
@@ -211,7 +211,51 @@ export default function Home() {
             </div>
           </div>
         </motion.section>
-
+        {/* Education Section */}
+        <motion.section 
+          className="w-full max-w-4xl mx-auto mb-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeIn}
+          id="education"
+        >
+          <motion.h2 
+            className="text-2xl md:text-3xl font-bold mb-8 text-center"
+            variants={slideUp}
+          >
+            My <span className="text-gradient">Education</span>
+          </motion.h2>
+          
+          <div className="space-y-8">
+            <motion.div 
+              className="p-6 bg-card-bg rounded-xl border border-border-color"
+              variants={slideUp}
+              whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", borderColor: "rgba(139, 92, 246, 0.5)" }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="flex items-center gap-4 mb-4">
+              <div className="p-3 bg-accent rounded-full text-background">
+                <Image 
+                  src="/logos/WashU.svg"
+                  alt="Washington University in St. Louis"
+                  width={80}
+                  height={80}
+                  className="object-contain" 
+                />
+              </div>
+                <div>
+                  <h3 className="text-xl font-bold">Washington University in St. Louis</h3>
+                  <p className="text-text-secondary">Bachelor of Science in Computer Science</p>
+                  <p className="text-text-secondary">2024 - 2028</p>
+                </div>
+              </div>
+              <p className="text-text-secondary">
+                Relevant Coursework: Data Structures & Algorithms, Calculus 3, Introduction to Computer Science, Introduction to Computer Engineering
+              </p>
+            </motion.div>
+          </div>
+        </motion.section>
         {/* Experience Section */}
         <motion.section 
           className="w-full max-w-4xl mx-auto mb-20"
@@ -232,36 +276,83 @@ export default function Home() {
             <motion.div 
               className="p-6 bg-card-bg rounded-xl border border-border-color"
               variants={slideUp}
+              whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", borderColor: "rgba(139, 92, 246, 0.5)" }}
+              whileTap={{ scale: 0.98 }}
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 bg-accent rounded-full text-background">
-                  <IconBriefcase size={24} />
+                <Image 
+                  src="/logos/engineering-test-kitchen.png"
+                  alt="Engineering Test Kitchen"
+                  width={80}
+                  height={80}
+                  className="object-contain" 
+                />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">Web Developer at Bliss Salon of Glenview</h3>
-                  <p className="text-text-secondary">April 2025 - Present</p>
+                  <h3 className="text-xl font-bold">Incoming Data Engineer at Engineering Test Kitchen</h3>
+                  <p className="text-text-secondary">May 2025</p>
                 </div>
               </div>
-              <p className="text-text-secondary">
-                Brief description of your role and achievements. Focus on impact and technologies used.
+              <p className="text-text-secondary mb-4">
+                Planning to develop an end-to-end ML image classification and counting model for Independent Stave Company, the largest stave manufacturer in America. Researching, building, and tuning an applicational model for inventory management to deploy by May 2025 to streamline the company's bottle-necking points through innovative AI solutions.
               </p>
             </motion.div>
             
             <motion.div 
               className="p-6 bg-card-bg rounded-xl border border-border-color"
               variants={slideUp}
+              whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", borderColor: "rgba(139, 92, 246, 0.5)" }}
+              whileTap={{ scale: 0.98 }}
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 bg-accent rounded-full text-background">
-                  <IconBriefcase size={24} />
+                <Image 
+                  src="/logos/bliss-glenview.jpg"
+                  alt="Bliss Salon of Glenview"
+                  width={80}
+                  height={80}
+                  className="object-contain" 
+                />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">Internship Title at Company</h3>
-                  <p className="text-text-secondary">Jun 2022 - Aug 2022</p>
+                  <h3 className="text-xl font-bold">Web Developer at Bliss Salon of Glenview</h3>
+                  <p className="text-text-secondary">April 2025 - Present</p>
+                </div>
+              </div>
+              <p className="text-text-secondary mb-4">
+                Designed and built a fully responsive salon website using React, Vite, SCSS, and JavaScript. Optimized SEO with sitemap, robots.txt, Open Graph metadata, and JSON-LD structured data. Integrated custom DNS/SSL with Vercel and GoDaddy to enable secure public deployment.
+              </p>
+              <p className="text-text-secondary">
+                <a href="https://blissglenview.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+                  blissglenview.com
+                </a>
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="p-6 bg-card-bg rounded-xl border border-border-color"
+              variants={slideUp}
+              whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", borderColor: "rgba(139, 92, 246, 0.5)" }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-accent rounded-full text-background">
+                <Image 
+                  src="/logos/bliss-winnetka.jpg"
+                  alt="Bliss Salon of Glenview"
+                  width={80}
+                  height={80}
+                  className="object-contain" 
+                />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">Data Analyst at Bliss Salon of Winnetka</h3>
+                  <p className="text-text-secondary">2021 - 2024</p>
                 </div>
               </div>
               <p className="text-text-secondary">
-                Brief description of your internship role and projects. Highlight learning and contributions.
+                Managed customer service data, analyzing trends that led to a 30% increase in satisfaction ratings. Tracked and recorded financial transactions, monitoring revenue trends for services and product sales totaling thousands of dollars.
               </p>
             </motion.div>
           </div>
@@ -287,33 +378,35 @@ export default function Home() {
             variants={staggerContainer}
           >
             <ProjectCard 
-              title="Project One"
-              description="A modern web application with sleek animations and responsive design."
-              tags={["React", "Framer Motion", "Tailwind CSS"]}
+              title="Bliss Salon of Glenview"
+              description="Professional salon website built for a real-world client with responsive design, optimized SEO, and secure DNS/SSL integration. Developed with React, Vite, SCSS, and JavaScript."
+              tags={["React", "Vite", "SCSS", "JavaScript"]}
+              liveLink="https://blissglenview.com"
+            />
+            <ProjectCard 
+              title="Pomodoro App"
+              description="Built using HTML, CSS, and JavaScript, a productivity web app implementing the Pomodoro Technique with customizable work and break timers. Integrated task management features for adding, viewing, and managing tasks."
+              tags={["HTML", "CSS", "JavaScript"]}
+              liveLink="https://g-gewargis.github.io/pomodoro-app/"
+              githubLink="https://github.com/G-Gewargis/pomodoro-app"
             />
             
             <ProjectCard 
-              title="Project Two"
-              description="A beautiful portfolio website showcasing creative design and smooth interactions."
-              tags={["Next.js", "GSAP", "CSS Modules"]}
+              title="NutriScan"
+              description="Advanced Streamlit application leveraging image analysis to assess nutritional content of food. Implemented API integrations with OpenAI and Foodvisor for personalized recipe suggestions and daily caloric intake calculations."
+              tags={["Python", "Streamlit", "OpenAI API", "Foodvisor API"]}
+              githubLink="https://github.com/G-Gewargis/NutriScan"
             />
             
             <ProjectCard 
-              title="Project Three"
-              description="An e-commerce platform with advanced filtering and search capabilities."
-              tags={["React", "Node.js", "MongoDB"]}
+              title="ML Recidivism Predictor"
+              description="Designed and implemented a fair and ethical machine learning model to predict recidivation rates with 80% accuracy using Florida county jail data. Analyzed 11,000-row dataset using Pandas, Scikit-learn neural networks, and NumPy."
+              tags={["Python", "Pandas", "Scikit-learn", "NumPy"]}
             />
-            
-            <ProjectCard 
-              title="Project Four"
-              description="A mobile-first dashboard with real-time data visualization and analytics."
-              tags={["Vue.js", "D3.js", "Firebase"]}
-            />
+          
           </motion.div>
         </motion.section>
 
-        {/* Experience Section */}
-        
 
         {/* Contact Section */}
         <motion.section 
@@ -343,6 +436,7 @@ export default function Home() {
                   <div className="p-2 bg-card-bg rounded-full text-accent">
                     <IconMail size={20} />
                   </div>
+                  
                   <p className="text-text-secondary">g.georges@wustl.edu</p>
                 </div>
                 
@@ -370,36 +464,43 @@ export default function Home() {
               <form className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-text-secondary mb-2">Name</label>
-                  <input 
+                  <motion.input 
                     type="text" 
                     id="name" 
                     className="w-full bg-background border border-border-color rounded-md px-4 py-2 focus:border-accent focus:outline-none"
+                    whileHover={{ boxShadow: "0 0 0 2px rgba(139, 92, 246, 0.3)" }}
+                    whileFocus={{ boxShadow: "0 0 0 2px rgba(139, 92, 246, 0.6)" }}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-text-secondary mb-2">Email</label>
-                  <input 
+                  <motion.input 
                     type="email" 
                     id="email" 
                     className="w-full bg-background border border-border-color rounded-md px-4 py-2 focus:border-accent focus:outline-none"
+                    whileHover={{ boxShadow: "0 0 0 2px rgba(139, 92, 246, 0.3)" }}
+                    whileFocus={{ boxShadow: "0 0 0 2px rgba(139, 92, 246, 0.6)" }}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-text-secondary mb-2">Message</label>
-                  <textarea 
+                  <motion.textarea 
                     id="message" 
                     rows="4"
                     className="w-full bg-background border border-border-color rounded-md px-4 py-2 focus:border-accent focus:outline-none"
-                  ></textarea>
+                    whileHover={{ boxShadow: "0 0 0 2px rgba(139, 92, 246, 0.3)" }}
+                    whileFocus={{ boxShadow: "0 0 0 2px rgba(139, 92, 246, 0.6)" }}
+                  ></motion.textarea>
                 </div>
                 
                 <motion.button
                   type="submit"
-                  className="w-full px-4 py-3 bg-accent hover:bg-accent-light rounded-md font-medium transition-all"
-                  whileHover={{ scale: 1.02 }}
+                  className="w-full px-4 py-3 bg-accent hover:bg-accent-light rounded-md font-medium"
+                  whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", cursor: "pointer" }}
                   whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
                 >
                   Send Message
                 </motion.button>
@@ -434,8 +535,10 @@ function SocialLink({ href, icon }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="p-3 bg-card-bg rounded-full hover:bg-accent/20 transition-all"
-      whileHover={{ y: -5 }}
+      className="p-3 bg-card-bg rounded-full hover:bg-accent/20"
+      whileHover={{ y: -8, scale: 1.05, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", backgroundColor: "rgba(139, 92, 246, 0.2)" }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
       variants={fadeIn}
     >
       {icon}
@@ -446,22 +549,31 @@ function SocialLink({ href, icon }) {
 function SkillCard({ icon, title, description }) {
   return (
     <motion.div 
-      className="p-6 bg-card-bg rounded-xl border border-border-color hover:border-accent/50 transition-all"
-      whileHover={{ y: -10 }}
+      className="p-6 bg-card-bg rounded-xl border border-border-color hover:border-accent/50"
+      whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", borderColor: "rgba(139, 92, 246, 0.5)" }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
       variants={slideUp}
     >
-      <div className="text-accent mb-4">{icon}</div>
+      <motion.div 
+        className="text-accent mb-4"
+        whileHover={{ scale: 1.2, rotate: 5 }}
+        transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+      >
+        {icon}
+      </motion.div>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <p className="text-text-secondary">{description}</p>
     </motion.div>
   );
 }
 
-function ProjectCard({ title, description, tags, imageUrl }) {
+function ProjectCard({ title, description, tags, imageUrl, liveLink, githubLink }) {
   return (
     <motion.div 
-      className="group rounded-xl overflow-hidden border border-border-color hover:border-accent/50 transition-all bg-card-bg"
-      whileHover={{ y: -10 }}
+      className="group rounded-xl overflow-hidden border border-border-color hover:border-accent/50 bg-card-bg"
+      whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", borderColor: "rgba(139, 92, 246, 0.5)" }}
+      whileTap={{ scale: 0.98 }}
       variants={slideUp}
     >
       <div className="relative h-48 overflow-hidden bg-gradient-to-br from-accent/20 to-accent-light/20">
@@ -474,13 +586,40 @@ function ProjectCard({ title, description, tags, imageUrl }) {
         <p className="text-text-secondary mb-4">{description}</p>
         <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
-            <span 
+            <motion.span 
               key={index} 
               className="px-3 py-1 text-sm bg-background rounded-full"
+              whileHover={{ scale: 1.1, backgroundColor: "rgba(139, 92, 246, 0.2)" }}
             >
               {tag}
-            </span>
+            </motion.span>
           ))}
+        </div>
+        <div className="flex flex-wrap gap-4 mt-4">
+          {liveLink && (
+            <motion.a 
+              href={liveLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-sm bg-accent rounded-md hover:bg-accent-light"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View Live
+            </motion.a>
+          )}
+          {githubLink && (
+            <motion.a 
+              href={githubLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-sm bg-card-bg border border-border-color rounded-md hover:border-accent"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View Code
+            </motion.a>
+          )}
         </div>
       </div>
     </motion.div>
@@ -488,36 +627,38 @@ function ProjectCard({ title, description, tags, imageUrl }) {
 }
 
 function LanguagesCarousel() {
+  const [isPaused, setIsPaused] = useState(false);
+  
   return (
     <div className="carousel-container py-8 bg-card-bg">
-      <div className="carousel-track">
+      <div className={`carousel-track ${isPaused ? 'paused' : ''}`}>
         {/* First set of logos */}
-        <TechLogo name="React" icon="/logos/react.svg" />
-        <TechLogo name="Python" icon="/logos/python.svg" />
-        <TechLogo name="Java" icon="/logos/java.svg" />
-        <TechLogo name="Tailwind CSS" icon="/logos/tailwind.svg" />
-        <TechLogo name="JavaScript" icon="/logos/javascript.svg" />
-        <TechLogo name="Next.js" icon="/logos/nextjs.svg" />
-        <TechLogo name="Node.js" icon="/logos/nodejs.svg" />
-        <TechLogo name="HTML" icon="/logos/html.svg" />
-        <TechLogo name="CSS" icon="/logos/css.svg" />
+        <TechLogo name="React" icon="/logos/react.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="Python" icon="/logos/python.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="Java" icon="/logos/java.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="Tailwind CSS" icon="/logos/tailwind.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="JavaScript" icon="/logos/javascript.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="Next.js" icon="/logos/nextjs.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="Node.js" icon="/logos/nodejs.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="HTML" icon="/logos/html.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="CSS" icon="/logos/css.svg" setIsPaused={setIsPaused} />
         
         {/* Duplicated set for continuous scrolling */}
-        <TechLogo name="React" icon="/logos/react.svg" />
-        <TechLogo name="Python" icon="/logos/python.svg" />
-        <TechLogo name="Java" icon="/logos/java.svg" />
-        <TechLogo name="Tailwind CSS" icon="/logos/tailwind.svg" />
-        <TechLogo name="JavaScript" icon="/logos/javascript.svg" />
-        <TechLogo name="Next.js" icon="/logos/nextjs.svg" />
-        <TechLogo name="Node.js" icon="/logos/nodejs.svg" />
-        <TechLogo name="HTML" icon="/logos/html.svg" />
-        <TechLogo name="CSS" icon="/logos/css.svg" />
+        <TechLogo name="React" icon="/logos/react.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="Python" icon="/logos/python.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="Java" icon="/logos/java.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="Tailwind CSS" icon="/logos/tailwind.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="JavaScript" icon="/logos/javascript.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="Next.js" icon="/logos/nextjs.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="Node.js" icon="/logos/nodejs.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="HTML" icon="/logos/html.svg" setIsPaused={setIsPaused} />
+        <TechLogo name="CSS" icon="/logos/css.svg" setIsPaused={setIsPaused} />
       </div>
     </div>
   );
 }
 
-function TechLogo({ name, icon }) {
+function TechLogo({ name, icon, setIsPaused }) {
   return (
     <div className="tech-logo-container">
       <motion.div 
@@ -527,13 +668,15 @@ function TechLogo({ name, icon }) {
           boxShadow: "0 0 25px rgba(139, 92, 246, 0.8)",
           backgroundColor: "rgba(139, 92, 246, 0.2)" 
         }}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
         <Image
           src={icon}
           alt={name}
           width={40}
           height={40}
-          className="w-full h-full object-contain transition-all duration-300 
+          className="w-full h-full object-contain duration-300 
                      group-hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.8)]"
         />
       </motion.div>

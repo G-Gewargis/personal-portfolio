@@ -72,6 +72,11 @@ html {
   animation: carousel 15s linear infinite;
 }
 
+/* Add this new class for paused state */
+.carousel-track.paused {
+  animation-play-state: paused;
+}
+
 @keyframes carousel {
   0% {
     transform: translateX(0);
