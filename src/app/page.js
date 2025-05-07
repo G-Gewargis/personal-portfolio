@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -10,7 +10,11 @@ import {
   IconCode,
   IconPalette,
   IconDeviceDesktop,
+  IconBriefcase,
+  IconCalendar,
+  IconMapPin,
 } from "@tabler/icons-react";
+import { useRef, useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import AnimatedBackground from "@/components/AnimatedBackground";
 
@@ -198,8 +202,70 @@ export default function Home() {
               description="Building interactive, animated interfaces with modern technologies like Framer Motion and GSAP."
             />
           </motion.div>
+
+          {/* Programming Languages Carousel */}
+          <div className="mt-12">
+            <h3 className="text-xl font-bold mb-4 text-center">Programming Languages</h3>
+            <div className="overflow-hidden rounded-lg border border-border-color">
+              <LanguagesCarousel />
+            </div>
+          </div>
         </motion.section>
 
+        {/* Experience Section */}
+        <motion.section 
+          className="w-full max-w-4xl mx-auto mb-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeIn}
+          id="experience"
+        >
+          <motion.h2 
+            className="text-2xl md:text-3xl font-bold mb-8 text-center"
+            variants={slideUp}
+          >
+            My <span className="text-gradient">Experience</span>
+          </motion.h2>
+          
+          <div className="space-y-8">
+            <motion.div 
+              className="p-6 bg-card-bg rounded-xl border border-border-color"
+              variants={slideUp}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-accent rounded-full text-background">
+                  <IconBriefcase size={24} />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">Web Developer at Bliss Salon of Glenview</h3>
+                  <p className="text-text-secondary">April 2025 - Present</p>
+                </div>
+              </div>
+              <p className="text-text-secondary">
+                Brief description of your role and achievements. Focus on impact and technologies used.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="p-6 bg-card-bg rounded-xl border border-border-color"
+              variants={slideUp}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-accent rounded-full text-background">
+                  <IconBriefcase size={24} />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">Internship Title at Company</h3>
+                  <p className="text-text-secondary">Jun 2022 - Aug 2022</p>
+                </div>
+              </div>
+              <p className="text-text-secondary">
+                Brief description of your internship role and projects. Highlight learning and contributions.
+              </p>
+            </motion.div>
+          </div>
+        </motion.section>
         {/* Projects Section */}
         <motion.section 
           className="w-full max-w-4xl mx-auto mb-20"
@@ -246,6 +312,9 @@ export default function Home() {
           </motion.div>
         </motion.section>
 
+        {/* Experience Section */}
+        
+
         {/* Contact Section */}
         <motion.section 
           className="w-full max-w-4xl mx-auto mb-16"
@@ -274,21 +343,21 @@ export default function Home() {
                   <div className="p-2 bg-card-bg rounded-full text-accent">
                     <IconMail size={20} />
                   </div>
-                  <p className="text-text-secondary">your.email@example.com</p>
+                  <p className="text-text-secondary">g.georges@wustl.edu</p>
                 </div>
                 
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-card-bg rounded-full text-accent">
                     <IconBrandLinkedin size={20} />
                   </div>
-                  <p className="text-text-secondary">linkedin.com/in/yourusername</p>
+                  <p className="text-text-secondary">linkedin.com/in/georges-gewargis</p>
                 </div>
                 
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-card-bg rounded-full text-accent">
                     <IconBrandGithub size={20} />
                   </div>
-                  <p className="text-text-secondary">github.com/yourusername</p>
+                  <p className="text-text-secondary">github.com/G-Gewargis</p>
                 </div>
               </div>
             </motion.div>
@@ -343,7 +412,7 @@ export default function Home() {
         <footer className="w-full max-w-4xl mx-auto text-center pb-8">
           <div className="border-t border-border-color pt-8 mt-16">
             <p className="text-text-secondary">
-              © {new Date().getFullYear()} Your Name. All rights reserved.
+              © {new Date().getFullYear()} Georges Gewargis. All rights reserved.
             </p>
             <div className="flex justify-center gap-4 mt-4">
               <a href="#" className="text-text-secondary hover:text-foreground transition-colors">Home</a>
@@ -415,6 +484,65 @@ function ProjectCard({ title, description, tags, imageUrl }) {
         </div>
       </div>
     </motion.div>
+  );
+}
+
+function LanguagesCarousel() {
+  return (
+    <div className="carousel-container py-8 bg-card-bg">
+      <div className="carousel-track">
+        {/* First set of logos */}
+        <TechLogo name="React" icon="/logos/react.svg" />
+        <TechLogo name="Python" icon="/logos/python.svg" />
+        <TechLogo name="Java" icon="/logos/java.svg" />
+        <TechLogo name="Tailwind CSS" icon="/logos/tailwind.svg" />
+        <TechLogo name="JavaScript" icon="/logos/javascript.svg" />
+        <TechLogo name="Next.js" icon="/logos/nextjs.svg" />
+        <TechLogo name="Node.js" icon="/logos/nodejs.svg" />
+        <TechLogo name="HTML" icon="/logos/html.svg" />
+        <TechLogo name="CSS" icon="/logos/css.svg" />
+        
+        {/* Duplicated set for continuous scrolling */}
+        <TechLogo name="React" icon="/logos/react.svg" />
+        <TechLogo name="Python" icon="/logos/python.svg" />
+        <TechLogo name="Java" icon="/logos/java.svg" />
+        <TechLogo name="Tailwind CSS" icon="/logos/tailwind.svg" />
+        <TechLogo name="JavaScript" icon="/logos/javascript.svg" />
+        <TechLogo name="Next.js" icon="/logos/nextjs.svg" />
+        <TechLogo name="Node.js" icon="/logos/nodejs.svg" />
+        <TechLogo name="HTML" icon="/logos/html.svg" />
+        <TechLogo name="CSS" icon="/logos/css.svg" />
+      </div>
+    </div>
+  );
+}
+
+function TechLogo({ name, icon }) {
+  return (
+    <div className="tech-logo-container">
+      <motion.div 
+        className="relative w-16 h-16 flex items-center justify-center rounded-xl bg-background p-2"
+        whileHover={{ 
+          scale: 1.1,
+          boxShadow: "0 0 25px rgba(139, 92, 246, 0.8)",
+          backgroundColor: "rgba(139, 92, 246, 0.2)" 
+        }}
+      >
+        <Image
+          src={icon}
+          alt={name}
+          width={40}
+          height={40}
+          className="w-full h-full object-contain transition-all duration-300 
+                     group-hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.8)]"
+        />
+      </motion.div>
+      
+      {/* Name that appears underneath on hover */}
+      <span className="tech-name text-foreground">
+        {name}
+      </span>
+    </div>
   );
 }
 
