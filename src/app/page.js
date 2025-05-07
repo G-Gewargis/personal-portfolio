@@ -54,7 +54,7 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-center p-4 md:p-24 pt-32">
         {/* Hero Section */}
         <motion.section 
-          className="w-full max-w-4xl mx-auto text-center mb-16"
+          className="w-full max-w-5xl mx-auto text-center mb-24 py-20"
           initial="hidden"
           animate="visible"
           variants={fadeIn}
@@ -62,39 +62,53 @@ export default function Home() {
         >
           {/* Profile Image with animated border */}
           <motion.div 
-            className="relative mx-auto w-32 h-32 mb-6 rounded-full overflow-hidden"
+            className="relative mx-auto w-44 h-44 mb-8 rounded-full overflow-hidden"
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent to-accent-light animate-spin-slow" />
             <div className="absolute inset-[3px] rounded-full bg-background overflow-hidden">
               {/* Replace with your own image */}
-              <div className="w-full h-full bg-card-bg flex items-center justify-center text-accent">
-                <span className="text-2xl font-bold">YN</span>
+              <div className="w-full h-full bg-card-bg flex items-center justify-center">
+                <motion.div 
+                  className="text-accent w-full h-full"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                >
+                  <Image
+                  src="/logos/hero-img.jpeg"
+                  alt="Georges Gewargis"
+                  fill={true}
+                  className="object-cover"
+                />
+                </motion.div>
               </div>
             </div>
           </motion.div>
 
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold mb-4"
+            className="text-5xl md:text-7xl font-bold mb-6"
             variants={slideUp}
           >
-            Hi, I'm <span className="text-gradient">Georges Gewargis</span>
+            Hi, I'm <span className="text-gradient relative inline-block">
+              Georges Gewargis
+            </span>
           </motion.h1>
           
           <motion.h2 
-            className="text-xl md:text-2xl text-text-secondary mb-6"
+            className="text-xl md:text-3xl text-text-secondary mb-8"
             variants={slideUp}
           >
             Computer Science Student & Web Developer
           </motion.h2>
           
           <motion.p 
-            className="text-lg max-w-2xl mx-auto mb-8"
+            className="text-lg md:text-xl max-w-3xl mx-auto mb-12"
             variants={slideUp}
           >
             I am currently learning and creating beautiful, responsive websites with smooth animations and modern designs.
-            Studying at Washington University in St. Louis [Class of '28'], I am passionate about technology and CS as a whole.
+            Studying at Washington University in St. Louis, I am passionate about technology and CS as a whole.
           </motion.p>
           
           {/* Social Links */}
@@ -153,6 +167,9 @@ export default function Home() {
             <motion.div 
               className="rounded-xl overflow-hidden border border-border-color bg-card-bg h-60 md:h-80 relative order-1 md:order-2"
               variants={fadeIn}
+              whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", borderColor: "rgba(139, 92, 246, 0.5)" }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
             >
                 <Image
                   src="/profile.png"
@@ -199,7 +216,7 @@ export default function Home() {
             <SkillCard 
               icon={<IconDeviceDesktop size={32} />}
               title="Frontend Engineering"
-              description="Building interactive, animated interfaces with modern technologies like Framer Motion and GSAP."
+              description="Building interactive, animated interfaces with modern technologies."
             />
           </motion.div>
 
@@ -376,19 +393,31 @@ export default function Home() {
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
             variants={staggerContainer}
-          >
+          > 
             <ProjectCard 
               title="Bliss Salon of Glenview"
               description="Professional salon website built for a real-world client with responsive design, optimized SEO, and secure DNS/SSL integration. Developed with React, Vite, SCSS, and JavaScript."
               tags={["React", "Vite", "SCSS", "JavaScript"]}
               liveLink="https://blissglenview.com"
+              githubLink="https://github.com/G-Gewargis/bliss-glenview"
+              imageUrl="/logos/bliss-glenview.jpg"
             />
+            
+            <ProjectCard
+              title="Portfolio Website"
+              description="Personal portfolio website showcasing my projects and skills. Built with Next.js, Tailwind CSS, and Framer Motion for smooth animations."
+              tags={["Next.js", "Tailwind CSS", "React", "Framer Motion"]}
+              liveLink="georgesgewargis.com"
+              githubLink="https://github.com/G-Gewargis/personal-portfolio"
+            />
+
             <ProjectCard 
               title="Pomodoro App"
               description="Built using HTML, CSS, and JavaScript, a productivity web app implementing the Pomodoro Technique with customizable work and break timers. Integrated task management features for adding, viewing, and managing tasks."
               tags={["HTML", "CSS", "JavaScript"]}
               liveLink="https://g-gewargis.github.io/pomodoro-app/"
               githubLink="https://github.com/G-Gewargis/pomodoro-app"
+              imageUrl={"/projects/pomodoro.png"}
             />
             
             <ProjectCard 
@@ -396,12 +425,15 @@ export default function Home() {
               description="Advanced Streamlit application leveraging image analysis to assess nutritional content of food. Implemented API integrations with OpenAI and Foodvisor for personalized recipe suggestions and daily caloric intake calculations."
               tags={["Python", "Streamlit", "OpenAI API", "Foodvisor API"]}
               githubLink="https://github.com/G-Gewargis/NutriScan"
+              imageUrl={"/projects/nutriscan.jpeg"}
             />
             
             <ProjectCard 
               title="ML Recidivism Predictor"
               description="Designed and implemented a fair and ethical machine learning model to predict recidivation rates with 80% accuracy using Florida county jail data. Analyzed 11,000-row dataset using Pandas, Scikit-learn neural networks, and NumPy."
               tags={["Python", "Pandas", "Scikit-learn", "NumPy"]}
+              imageUrl={"/projects/recidivism.png"}
+              
             />
           
           </motion.div>
@@ -516,10 +548,42 @@ export default function Home() {
               © {new Date().getFullYear()} Georges Gewargis. All rights reserved.
             </p>
             <div className="flex justify-center gap-4 mt-4">
-              <a href="#" className="text-text-secondary hover:text-foreground transition-colors">Home</a>
-              <a href="#about" className="text-text-secondary hover:text-foreground transition-colors">About</a>
-              <a href="#projects" className="text-text-secondary hover:text-foreground transition-colors">Projects</a>
-              <a href="#contact" className="text-text-secondary hover:text-foreground transition-colors">Contact</a>
+              <motion.a 
+                href="#" 
+                className="text-text-secondary hover:text-foreground transition-colors"
+                whileHover={{ y: -3, scale: 1.1, color: "#ffffff" }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+              >
+                Home
+              </motion.a>
+              <motion.a 
+                href="#about" 
+                className="text-text-secondary hover:text-foreground transition-colors"
+                whileHover={{ y: -3, scale: 1.1, color: "#ffffff" }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+              >
+                About
+              </motion.a>
+              <motion.a 
+                href="#projects" 
+                className="text-text-secondary hover:text-foreground transition-colors"
+                whileHover={{ y: -3, scale: 1.1, color: "#ffffff" }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+              >
+                Projects
+              </motion.a>
+              <motion.a 
+                href="#contact" 
+                className="text-text-secondary hover:text-foreground transition-colors"
+                whileHover={{ y: -3, scale: 1.1, color: "#ffffff" }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+              >
+                Contact
+              </motion.a>
             </div>
           </div>
         </footer>
@@ -576,9 +640,16 @@ function ProjectCard({ title, description, tags, imageUrl, liveLink, githubLink 
       whileTap={{ scale: 0.98 }}
       variants={slideUp}
     >
-      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-accent/20 to-accent-light/20">
-        <div className="w-full h-full flex items-center justify-center">
-          <span className="text-xl font-bold">{title}</span>
+      <div className="relative h-48">
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            alt={`${title} screenshot`}
+            fill
+            className="object-contain translate-y-3 transition-transform duration-300 group-hover:scale-105"
+          />
+        )}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         </div>
       </div>
       <div className="p-6">
@@ -601,7 +672,7 @@ function ProjectCard({ title, description, tags, imageUrl, liveLink, githubLink 
               href={liveLink} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="px-4 py-2 text-sm bg-accent rounded-md hover:bg-accent-light"
+              className="px-4 py-2 text-sm bg-accent rounded-md hover:bg-accent-light text-white"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >

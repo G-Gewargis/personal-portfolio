@@ -63,13 +63,22 @@ const Navbar = () => {
                 href={item.href}
                 className="text-text-secondary hover:text-foreground transition-colors"
               >
-                {item.name}
+                <motion.div
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+                  style={{ display: "inline-block" }}
+                  className="text-text-secondary hover:text-white"
+                >
+                  {item.name}
+                </motion.div>
               </Link>
             ))}
             <motion.button
-              className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md transition-all"
-              whileHover={{ scale: 1.05 }}
+              className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md"
+              whileHover={{ y: -5, scale: 1.05, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)" }}
               whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
             >
               Resume
             </motion.button>
@@ -110,12 +119,25 @@ const Navbar = () => {
                   className="text-text-secondary hover:text-foreground transition-colors py-2"
                   onClick={() => setIsOpen(false)}
                 >
-                  {item.name}
+                  <motion.div
+                    whileHover={{ x: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+                    style={{ display: "inline-block" }}
+                    className="text-text-secondary hover:text-white"
+                  >
+                    {item.name}
+                  </motion.div>
                 </Link>
               ))}
-              <button className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md w-full transition-all">
+              <motion.button 
+                className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md w-full transition-all"
+                whileHover={{ y: -3, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)" }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+              >
                 Resume
-              </button>
+              </motion.button>
             </div>
           </motion.div>
         )}
