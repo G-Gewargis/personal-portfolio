@@ -150,12 +150,12 @@ export default function Home() {
                 I'm a passionate Computer Science student with a passionate for full-stack development. I've worked on several personal and business-based projects over the span of many years, incorporating modern technologies and frameworks.
               </p>
               <p className="text-text-secondary mb-4">
-                Outside of coding, I love playing video games, skateboarding, basketball & the gym, and spending time with friends. 
+                Outside of coding, I love playing video games, listening to music, skateboarding, basketball & the gym, and spending time with friends. 
               </p>
               <div className="grid grid-cols-2 gap-4 mt-6">
                 <div>
                   <h4 className="font-bold">Location</h4>
-                  <p className="text-text-secondary">Chicago, IL</p>
+                  <p className="text-text-secondary">St. Louis, MO | Chicago, IL</p>
                 </div>
                 <div>
                   <h4 className="font-bold">Email</h4>
@@ -307,12 +307,12 @@ export default function Home() {
                 />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">Incoming Data Engineer at Engineering Test Kitchen</h3>
+                  <h3 className="text-xl font-bold">Incoming Data Engineer Intern at Engineering Test Kitchen</h3>
                   <p className="text-text-secondary">May 2025</p>
                 </div>
               </div>
               <p className="text-text-secondary mb-4">
-                Planning to develop an end-to-end ML image classification and counting model for Independent Stave Company, the largest stave manufacturer in America. Researching, building, and tuning an applicational model for inventory management to deploy by May 2025 to streamline the company's bottle-necking points through innovative AI solutions.
+              Assisting in the development of a machine learning model for image classification and object counting at Independent Stave Company. Contributing to the research, construction, and tuning of a system aimed at improving inventory management and reducing operational costs by leveraging practical AI solutions.
               </p>
             </motion.div>
             
@@ -409,6 +409,7 @@ export default function Home() {
               tags={["Next.js", "Tailwind CSS", "React", "Framer Motion"]}
               liveLink="georgesgewargis.com"
               githubLink="https://github.com/G-Gewargis/personal-portfolio"
+              imageUrl="/projects/portfolio.png"
             />
 
             <ProjectCard 
@@ -635,7 +636,7 @@ function SkillCard({ icon, title, description }) {
 function ProjectCard({ title, description, tags, imageUrl, liveLink, githubLink }) {
   return (
     <motion.div 
-      className="group rounded-xl overflow-hidden border border-border-color hover:border-accent/50 bg-card-bg"
+      className="group rounded-xl overflow-hidden border border-border-color hover:border-accent/50 bg-card-bg flex flex-col"
       whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", borderColor: "rgba(139, 92, 246, 0.5)" }}
       whileTap={{ scale: 0.98 }}
       variants={slideUp}
@@ -652,10 +653,10 @@ function ProjectCard({ title, description, tags, imageUrl, liveLink, githubLink 
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         </div>
       </div>
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <p className="text-text-secondary mb-4">{description}</p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mb-4">
           {tags.map((tag, index) => (
             <motion.span 
               key={index} 
@@ -666,7 +667,7 @@ function ProjectCard({ title, description, tags, imageUrl, liveLink, githubLink 
             </motion.span>
           ))}
         </div>
-        <div className="flex flex-wrap gap-4 mt-4">
+        <div className="flex flex-wrap gap-4 mt-auto">
           {liveLink && (
             <motion.a 
               href={liveLink} 
