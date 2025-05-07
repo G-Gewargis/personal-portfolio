@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconMenu2, IconX } from '@tabler/icons-react';
@@ -9,34 +9,38 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   
-  // Handle scroll effect
+  // Handle scroll effect with optimized event listener
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const offset = window.scrollY;
+          setScrolled(offset > 50);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  // Navigation items
-  const navItems = [
+  // Navigation items - memoized to prevent re-creation on each render
+  const navItems = useMemo(() => [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' }
-  ];
+  ], []);
 
-  // Scroll to section function
-  const scrollToSection = (e, sectionId) => {
+  // Scroll to section function - memoized
+  const scrollToSection = useCallback((e, sectionId) => {
     e.preventDefault();
     
     // Strip the # from the sectionId if present to ensure proper selector format
@@ -55,10 +59,15 @@ const Navbar = () => {
         });
       }, isOpen ? 300 : 0); // Small delay only if menu was open
     }
-  };
+  }, [isOpen]);
+  
+  // Toggle menu function - memoized
+  const toggleMenu = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'py-3 bg-background/90 backdrop-blur-md border-b border-border-color' : 'py-5'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 duration-300 ${scrolled ? 'py-3 bg-background/90 backdrop-blur-md border-b border-border-color' : 'py-5'}`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -118,8 +127,9 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
           >
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={toggleMenu}
               className="p-2 bg-card-bg rounded-lg"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
             </button>
@@ -138,7 +148,12 @@ const Navbar = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               className="fixed inset-0 bg-black z-40"
-              onClick={() => setIsOpen(false)}
+              onClick={toggleMenu}
+              style={{
+                touchAction: "none",
+                willChange: "opacity",
+                transform: "translateZ(0)"
+              }}
             />
 
             {/* Mobile Menu */}
@@ -148,6 +163,11 @@ const Navbar = () => {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
               className="md:hidden bg-card-bg border-b border-border-color relative z-50"
+              style={{
+                willChange: "opacity, height",
+                transform: "translateZ(0)",
+                overflowY: "hidden"
+              }}
             >
               <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
                 {navItems.map((item, index) => (
