@@ -42,7 +42,7 @@ export default function HeroSection() {
       </motion.div>
 
       <motion.h1 
-        className="text-5xl md:text-7xl font-bold mb-6"
+        className="text-5xl md:text-7xl font-bold leading-[1.09] mb-6"
         variants={slideUp}
       >
         Hi, I&#39;m <span className="text-gradient relative inline-block">
