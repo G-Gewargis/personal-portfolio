@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Portfolio
 
-## Getting Started
+![Portfolio Banner](/public/og-image.png)
 
-First, run the development server:
+A modern, responsive personal portfolio website built with Next.js, React, and TailwindCSS. This portfolio showcases my skills, projects, education, and work experience.
+
+## 🌟 Features
+
+- **Responsive Design**: Optimized for all device sizes
+- **Interactive UI**: Smooth animations powered by Framer Motion
+- **Dynamic Sections**:
+  - Hero Section with social links
+  - About Me
+  - Skills & Expertise
+  - Education Timeline
+  - Work Experience
+  - Featured Projects Showcase
+  - Contact Form with email functionality
+- **Animated Background**: Custom animated particle background
+- **Performance Optimized**: Built with Next.js for optimal performance
+
+## 🛠️ Technologies
+
+- **Frontend**: React 19, Next.js 15.3
+- **Styling**: TailwindCSS 4
+- **Animations**: Framer Motion
+- **Icons**: Tabler Icons
+- **Email Service**: Nodemailer
+- **Analytics**: Vercel Analytics
+
+## 📋 Project Structure
+
+```
+src/
+├── app/              # Next.js app directory
+│   ├── api/          # API routes
+│   └── page.js       # Main page
+├── components/       # React components
+│   ├── sections/     # Page sections
+│   └── ...           # Other components
+└── utils/            # Utility functions
+```
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/G-Gewargis/personal-portfolio.git
+cd personal-portfolio
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. **Start the development server**
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000) to see the portfolio.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🔧 Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To configure the contact form functionality, you'll need to set up environment variables:
 
-## Learn More
+1. Create a `.env.local` file in the root directory
+2. Add your email configuration:
 
-To learn more about Next.js, take a look at the following resources:
+```
+EMAIL_USER=your-email@example.com
+EMAIL_PASS=your-app-password
+EMAIL_CC=additional-email@example.com
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💻 Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Build for production**
 
-## Deploy on Vercel
+```bash
+npm run build
+# or
+yarn build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Run production build**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run start
+# or
+yarn start
+```
+
+## 🌐 Deployment
+
+This portfolio is optimized for deployment on [Vercel](https://vercel.com), but can be deployed to any hosting platform that supports Next.js applications.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyourusername%2Fpersonal-portfolio)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 📞 Contact
+
+If you have any questions or would like to connect, feel free to reach out through the contact form on the portfolio or via:
+
+- GitHub: [G-Gewargis](https://github.com/G-Gewargis)
+- LinkedIn: [Georges Gewargis](https://linkedin.com/in/georges-gewargis)
