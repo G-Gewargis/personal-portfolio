@@ -114,27 +114,23 @@ export default function ContactSection() {
           </p>
           
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-card-bg rounded-full text-accent">
-                <IconMail size={20} />
-              </div>
-              
-              <p className="text-text-secondary">g.georges@wustl.edu</p>
-            </div>
+            <ContactLink 
+              href="mailto:g.georges@wustl.edu"
+              icon={<IconMail size={20} />}
+              text="g.georges@wustl.edu"
+            />
             
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-card-bg rounded-full text-accent">
-                <IconBrandLinkedin size={20} />
-              </div>
-              <p className="text-text-secondary">linkedin.com/in/georges-gewargis</p>
-            </div>
+            <ContactLink 
+              href="https://www.linkedin.com/in/georges-gewargis"
+              icon={<IconBrandLinkedin size={20} />}
+              text="linkedin.com/in/georges-gewargis"
+            />
             
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-card-bg rounded-full text-accent">
-                <IconBrandGithub size={20} />
-              </div>
-              <p className="text-text-secondary">github.com/G-Gewargis</p>
-            </div>
+            <ContactLink 
+              href="https://github.com/G-Gewargis"
+              icon={<IconBrandGithub size={20} />}
+              text="github.com/G-Gewargis"
+            />
           </div>
         </motion.div>
         
@@ -213,5 +209,29 @@ export default function ContactSection() {
         </motion.div>
       </div>
     </motion.section>
+  );
+}
+
+function ContactLink({ href, icon, text }) {
+  return (
+    <motion.a
+      href={href}
+      target={href.startsWith('mailto:') ? '_self' : '_blank'}
+      rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+      className="flex items-center gap-3 group cursor-pointer"
+      whileHover={{ x: 4 }}
+      transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+    >
+      <motion.div 
+        className="p-2 bg-card-bg rounded-full text-accent group-hover:bg-accent/20 transition-colors duration-200"
+        whileHover={{ scale: 1.1, rotate: 5 }}
+        transition={{ duration: 0.2, type: "spring", stiffness: 400 }}
+      >
+        {icon}
+      </motion.div>
+      <p className="text-text-secondary group-hover:text-accent transition-colors duration-200">
+        {text}
+      </p>
+    </motion.a>
   );
 }

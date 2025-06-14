@@ -23,6 +23,11 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
   transition: var(--transition-standard);
+  /* Improve text rendering for Windows */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
 /* Add smooth scrolling */
@@ -36,6 +41,31 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  /* Fix for descender clipping on Windows */
+  display: inline-block;
+  padding-bottom: 0.1em;
+  line-height: 1.2;
+  /* Improve visibility with subtle shadow */
+  filter: drop-shadow(0 0 1px rgba(109, 40, 217, 0.4));
+  /* Fallback for browsers with poor gradient text support */
+  color: var(--accent);
+}
+
+/* Alternative gradient approach for better compatibility */
+@supports not (-webkit-background-clip: text) {
+  .text-gradient {
+    color: var(--accent);
+    text-shadow: 0 0 2px rgba(109, 40, 217, 0.5);
+  }
+}
+
+/* Enhanced text visibility for important headings */
+.text-enhanced {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Animation classes */

@@ -21,22 +21,24 @@ export default function ExperienceSection() {
         My <span className="text-gradient">Experience</span>
       </motion.h2>
       
-      <div className="space-y-8">
+      <div className="space-y-8">        
         <ExperienceCard 
           logo="/logos/habitat-financial.jpeg"
           company="Habitat Financial"
           title="Software Development Intern"
           date="June 2025 - August 2025"
-          description="Selected to work directly with the CTO and CEO of a music-tech startup to develop and deploy innovative software solutions for the independent music industry. Assisting in writing and debugging production-level code, participating in code reviews, and contributing to feature development, bug fixes, and product improvements. Gaining hands-on experience with modern web development tools and agile startup workflows."
+          description={`Currently contributing to Habitat Financial, a sophisticated Django-based platform that revolutionizes how music industry professionals manage royalties, deals, and payments. Developing a comprehensive system that processes royalties from several sources and distributors.
+
+Key Contributions:
+• Developing full-stack features using Django, HTMX/Bootstrap CSS, and JavaScript for royalty statement processing and payee management
+• Building responsive web interfaces for album/artist management, revenue stream tracking, and financial reporting
+• Implementing data processing pipelines that handle complex royalty calculations across multiple currencies and territories
+• Contributing to API development for seamless integration with external music platforms and payment systems
+
+The platform processes millions in royalties and provides comprehensive analytics for artists, labels, and music professionals. Through this role, I'm gaining hands-on experience with enterprise-level Django development, database optimization, and music industry business logic.`}
         />
 
-        <ExperienceCard 
-          logo="/logos/engineering-test-kitchen.png"
-          company="Engineering Test Kitchen"
-          title="Data Engineer Intern"
-          date="May 2025"
-          description="Assisting in the development of a machine learning model for image classification and object counting at Independent Stave Company. Contributing to the research, construction, and tuning of a system aimed at improving inventory management and reducing operational costs by leveraging practical AI solutions."
-        />
+
         
         <ExperienceCard 
           logo="/logos/bliss-glenview.jpg"
@@ -46,8 +48,18 @@ export default function ExperienceSection() {
           description="Designed and built a fully responsive salon website using React, Vite, SCSS, and JavaScript. Optimized SEO with sitemap, robots.txt, Open Graph metadata, and JSON-LD structured data. Integrated custom DNS/SSL with Vercel and GoDaddy to enable secure public deployment."
           website="https://blissglenview.com"
         />
-      
+
+        <ExperienceCard
+          logo="/logos/Inspirit-AI.png"
+          company="Inspirit AI"
+          title="Student AI Scholar"
+          date="June 2023 - August 2023"
+          description="I completed the Inspirit AI Scholars Program, where I gained a strong foundation in Python, artificial intelligence, and machine learning. Through hands-on projects, I explored natural language processing (NLP) and convolutional neural networks (CNNs) while also studying the ethical implications of AI, particularly in criminal justice."
+        /> 
+
+
       </div>
+
     </motion.section>
   );
 }
@@ -75,7 +87,7 @@ function ExperienceCard({ logo, title, company, date, description, website }) {
           <p className="text-text-secondary">{date}</p>
         </div>
       </div>
-      <p className="text-text-secondary mb-4">{description}</p>
+      <p className="text-text-secondary mb-4 whitespace-pre-line">{description}</p>
       
       {website && (
         <p className="text-text-secondary">

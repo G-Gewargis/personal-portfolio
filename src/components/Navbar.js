@@ -64,32 +64,30 @@ const Navbar = () => {
   const mobileMenuVariants = {
     hidden: { opacity: 0, height: 0 },
     visible: { opacity: 1, height: 'auto', transition: { duration: 0.2 } }
-  };
-
-  return (
-    <nav className={`fixed top-0 left-0 w-full z-50 ${scrolled ? 'py-3 bg-background/90 backdrop-blur-md border-b border-border-color' : 'py-5'}`}
-         style={{ willChange: 'padding', transform: 'translateZ(0)' }}>
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex justify-between items-center">
+  };  return (
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${scrolled || isOpen ? 'py-3 bg-background/90 backdrop-blur-md' : 'py-5'}`}
+         style={{ willChange: 'padding, background-color, border-color', transform: 'translateZ(0)' }}>      {/* Animated border that slides in from the bottom */}
+      <div className={`absolute bottom-0 left-0 w-full h-px bg-border-color transition-opacity duration-300 ease-in-out ${scrolled || isOpen ? 'opacity-100' : 'opacity-0'}`} />
+      
+      <div className="container mx-auto px-4 md:px-6">        <div className="flex justify-between items-center min-h-[3rem]"> 
           {/* Logo */}
           <Link href="/" className="font-bold text-xl text-gradient">
             Georges Gewargis
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
+          <div className="hidden md:flex items-center space-x-8">{navItems.map((item, index) => (
               <Link 
                 key={index} 
                 href={item.href}
                 onClick={(e) => scrollToSection(e, item.href)}
-                className="text-text-secondary hover:text-foreground transition-colors"
+                className="flex items-center h-full leading-none" // Added leading-none for consistent baseline
               >
                 <motion.div
-                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileHover={{ y: -2, scale: 1.05 }} // Reduced y movement from -3 to -2
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.1, type: "spring", stiffness: 400 }}
-                  className="text-text-secondary hover:text-white"
+                  className="text-text-secondary hover:text-white transition-colors duration-200 leading-none"
                 >
                   {item.name}
                 </motion.div>
@@ -99,8 +97,8 @@ const Navbar = () => {
               href="/projects/Georges Gewargis - Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md inline-block text-white"
-              whileHover={{ y: -5, scale: 1.05, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)" }}
+              className="px-4 py-2 bg-accent hover:bg-accent-light rounded-md text-white flex items-center leading-none" // Added leading-none
+              whileHover={{ y: -2, scale: 1.05, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.4)" }} // Reduced y movement
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
@@ -111,7 +109,7 @@ const Navbar = () => {
           {/* Mobile Navigation Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 bg-card-bg rounded-lg"
+            className="md:hidden p-2 bg-card-bg rounded-lg flex items-center justify-center h-10 w-10 transition-colors duration-200 relative z-50"
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
@@ -122,20 +120,20 @@ const Navbar = () => {
       {/* Mobile Menu Overlay - optimized for performance */}
       <AnimatePresence>
         {isOpen && (
-          <>
-            {/* Dark overlay */}
+          <>            {/* Dark overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.7 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="fixed inset-0 bg-black z-40"
-              onClick={() => setIsOpen(false)}
+              className="fixed inset-x-0 bottom-0 bg-black z-40"
               style={{
+                top: '100%',
                 willChange: "opacity",
                 transform: "translateZ(0)",
                 touchAction: "none"
               }}
+              onClick={() => setIsOpen(false)}
             />
 
             {/* Mobile Menu */}
