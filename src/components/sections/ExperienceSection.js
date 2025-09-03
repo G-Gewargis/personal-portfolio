@@ -21,21 +21,42 @@ export default function ExperienceSection() {
         My <span className="text-gradient">Experience</span>
       </motion.h2>
       
-      <div className="space-y-8">        
+      <div className="space-y-8">     
+
+        <ExperienceCard 
+          logo="/logos/jukehouse.png"
+          company="JukeHouse Music Publishing"
+          title="Co-Founder & Lead Developer"
+          date="July 2025 - Present"
+          description={`Currently leading the development of JukeHouse, a music publishing administration platform that empowers songwriters to collect royalties globally while retaining 100% ownership of their rights. Designing and building a full-stack system to handle worldwide music publishing administration, royalty collection, and songwriter account management.
+
+Key Contributions:
+
+- Architecting and implementing the platform using Django, PostgreSQL, and modern web technologies to provide a robust, scalable backend and user-friendly frontend
+
+- Designing scalable database schemas and building RESTful APIs with Django REST Framework (DRF) to integrate with global collection societies, performance rights organizations (PROs), and digital service providers for automated royalty tracking and distribution
+
+- Building comprehensive user dashboards and reporting systems that deliver real-time earnings analytics, detailed monthly reports, and transparent royalty breakdowns for thousands of songwriters worldwide
+
+- Managing technical decisions across the platform, including system architecture, API design, and database optimizations, while coordinating product requirements and implementation priorities
+        `}
+
+        />
+
         <ExperienceCard 
           logo="/logos/habitat-financial.jpeg"
           company="Habitat Financial"
           title="Software Development Intern"
           date="June 2025 - August 2025"
-          description={`Currently contributing to Habitat Financial, a sophisticated Django-based platform that revolutionizes how music industry professionals manage royalties, deals, and payments. Developing a comprehensive system that processes royalties from several sources and distributors.
+          description={`Contributed to Habitat Financial, a sophisticated Django-based platform that revolutionizes how music industry professionals manage royalties, deals, and payments. Developed a comprehensive system that processed royalties from several sources and distributors.
 
 Key Contributions:
-• Developing full-stack features using Django, HTMX/Bootstrap CSS, and JavaScript for royalty statement processing and payee management
-• Building responsive web interfaces for album/artist management, revenue stream tracking, and financial reporting
-• Implementing data processing pipelines that handle complex royalty calculations across multiple currencies and territories
-• Contributing to API development for seamless integration with external music platforms and payment systems
+- Developed full-stack features using Django, HTMX/Bootstrap CSS, and JavaScript for royalty statement processing and payee management improving processing efficiency by 30%
+- Built responsive web interfaces for album/artist management, revenue stream tracking, and financial reporting, used by dozens of labels and hundreds of artists
+- Implemented data processing pipelines that handle complex royalty calculations in 10+ currencies across 20+ territories, ensuring accuracy and compliance
+- Contributed to API development for seamless integration with external music platforms and payment systems
 
-The platform processes millions in royalties and provides comprehensive analytics for artists, labels, and music professionals. Through this role, I'm gaining hands-on experience with enterprise-level Django development, database optimization, and music industry business logic.`}
+The platform processes millions in royalties and provides comprehensive analytics for artists, labels, and music professionals. Through this role, I gained hands-on experience with enterprise-level Django development, database optimization, and music industry business logic.`}
         />
 
 
