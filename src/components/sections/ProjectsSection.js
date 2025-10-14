@@ -26,12 +26,12 @@ export default function ProjectsSection() {
         variants={staggerContainer}
       > 
         <ProjectCard 
-          title="Bliss Salon of Glenview"
-          description="Professional salon website built for a real-world client with responsive design, optimized SEO, and secure DNS/SSL integration. Developed with React, Vite, SCSS, and JavaScript."
-          tags={["React", "Vite", "SCSS", "JavaScript"]}
-          liveLink="https://blissglenview.com"
-          githubLink="https://github.com/G-Gewargis/bliss-glenview"
-          imageUrl="/logos/bliss-glenview.jpg"
+          title="Story Blog"
+          description="A custom multi-user blogging platform built from scratch with PHP. Implemented user authentication, post management, and deployed on an AWS EC2 instance using Apache on Linux, gaining hands-on experience in server configuration and web hosting."
+          tags={["PHP", "MySQL", "Apache", "AWS Linux (EC2)"]}
+          liveLink="https://storyblog.georgesgewargis.com"
+          githubLink="https://github.com/G-Gewargis/story-blog"
+          imageUrl="/logos/story-blog.png"
         />
         
         <ProjectCard
