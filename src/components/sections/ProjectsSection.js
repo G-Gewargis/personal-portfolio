@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function ProjectsSection() {
   return (
-    <motion.section 
+    <motion.section
       className="w-full max-w-4xl mx-auto mb-20"
       initial="hidden"
       whileInView="visible"
@@ -14,53 +14,51 @@ export default function ProjectsSection() {
       variants={fadeIn}
       id="projects"
     >
-      <motion.h2 
+      <motion.h2
         className="text-2xl md:text-3xl font-bold mb-8 text-center"
         variants={slideUp}
       >
         Featured <span className="text-gradient">Projects</span>
       </motion.h2>
-      
-      <motion.div 
+
+      <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-8"
         variants={staggerContainer}
-      > 
-        <ProjectCard 
-          title="Story Blog"
-          description="A custom multi-user blogging platform built from scratch with PHP. Implemented user authentication, post management, and deployed on an AWS EC2 instance using Apache on Linux, gaining hands-on experience in server configuration and web hosting."
-          tags={["PHP", "MySQL", "Apache", "AWS Linux (EC2)"]}
-          liveLink="https://storyblog.georgesgewargis.com"
-          githubLink="https://github.com/G-Gewargis/story-blog"
-          imageUrl="/logos/story-blog.png"
-        />
-        
+      >
+
         <ProjectCard
-          title="Portfolio Website"
-          description="Personal portfolio website showcasing my projects and skills. Built with Next.js, Tailwind CSS, and Framer Motion for smooth animations."
-          tags={["Next.js", "Tailwind CSS", "React", "Framer Motion"]}
-          liveLink="georgesgewargis.com"
-          githubLink="https://github.com/G-Gewargis/personal-portfolio"
-          imageUrl="/projects/portfolio.png"
+          title="Trellofy"
+          description="A full-stack Trello clone built with React, Express.js, Node.js, and MongoDB. Features drag-and-drop functionality, user authentication, and responsive design for seamless task management. Served on AWS EC2 (expired due to free-tier limits) with a MongoDB Atlas database."
+          tags={["React", "Express.js", "Node.js", "MongoDB", "AWS EC2"]}
+          githubLink={"https://github.com/G-Gewargis/Trellofy"}
+          imageUrl={"/projects/trellofy.png"}
         />
 
-        <ProjectCard 
-          title="Pomodoro App"
-          description="Built using HTML, CSS, and JavaScript, a productivity web app implementing the Pomodoro Technique with customizable work and break timers. Integrated task management features for adding, viewing, and managing tasks."
-          tags={["HTML", "CSS", "JavaScript"]}
-          liveLink="https://g-gewargis.github.io/pomodoro-app/"
-          githubLink="https://github.com/G-Gewargis/pomodoro-app"
-          imageUrl={"/projects/pomodoro.png"}
+        <ProjectCard
+          title="MovieFinder"
+          description="A dynamic movie search application utilizing the TMDb API to fetch and display movie data. Emphasis of the project was to build with React and create a polished, detailed UI. Deployed on GitHub Pages."
+          tags={["React", "TMDb API", "Frontend Design"]}
+          githubLink={"https://github.com/G-Gewargis/MovieFinder"}
+          liveLink={"https://g-gewargis.github.io/MovieFinder/"}
+          imageUrl={"/projects/moviefinder.png"}
         />
-        
-        <ProjectCard 
+
+        <ProjectCard
+          title="Multi Room Chat Application"
+          description="A real-time multi-room chat application built with Node.js, and Socket.io. Features user authentication, room creation, and message persistence. Deployed on AWS EC2 (expired due to free-tier limits)."
+          tags={["Node.js", "Socket.io", "AWS EC2"]}
+          githubLink={"https://github.com/G-Gewargis/Chat-App"}
+          imageUrl={"/projects/chat-app.png"}
+        />
+        <ProjectCard
           title="NutriScan"
           description="Advanced Streamlit application leveraging image analysis to assess nutritional content of food. Implemented API integrations with OpenAI and Foodvisor for personalized recipe suggestions and daily caloric intake calculations."
           tags={["Python", "Streamlit", "OpenAI API", "Foodvisor API"]}
           githubLink="https://github.com/G-Gewargis/NutriScan"
           imageUrl={"/projects/nutriscan.jpeg"}
         />
-        
-        <ProjectCard 
+
+        <ProjectCard
           title="ML Recidivism Predictor"
           description="Designed and implemented a fair and ethical machine learning model to predict recidivation rates with 80% accuracy using Florida county jail data. Analyzed 11,000-row dataset using Pandas, Scikit-learn neural networks, and NumPy."
           tags={["Python", "Pandas", "Scikit-learn", "NumPy"]}
@@ -73,7 +71,7 @@ export default function ProjectsSection() {
 
 function ProjectCard({ title, description, tags, imageUrl, liveLink, githubLink }) {
   return (
-    <motion.div 
+    <motion.div
       className="group rounded-xl overflow-hidden border border-border-color hover:border-accent/50 bg-card-bg flex flex-col"
       whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", borderColor: "rgba(139, 92, 246, 0.5)" }}
       whileTap={{ scale: 0.98 }}
@@ -97,8 +95,8 @@ function ProjectCard({ title, description, tags, imageUrl, liveLink, githubLink 
         <p className="text-text-secondary mb-4">{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {tags.map((tag, index) => (
-            <motion.span 
-              key={index} 
+            <motion.span
+              key={index}
               className="px-3 py-1 text-sm bg-background rounded-full"
               whileHover={{ scale: 1.1, backgroundColor: "rgba(139, 92, 246, 0.2)" }}
             >
@@ -108,9 +106,9 @@ function ProjectCard({ title, description, tags, imageUrl, liveLink, githubLink 
         </div>
         <div className="flex flex-wrap gap-4 mt-auto">
           {liveLink && (
-            <motion.a 
-              href={liveLink} 
-              target="_blank" 
+            <motion.a
+              href={liveLink}
+              target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 text-sm bg-accent rounded-md hover:bg-accent-light text-white"
               whileHover={{ scale: 1.1 }}
@@ -120,9 +118,9 @@ function ProjectCard({ title, description, tags, imageUrl, liveLink, githubLink 
             </motion.a>
           )}
           {githubLink && (
-            <motion.a 
-              href={githubLink} 
-              target="_blank" 
+            <motion.a
+              href={githubLink}
+              target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 text-sm bg-card-bg border border-border-color rounded-md hover:border-accent"
               whileHover={{ scale: 1.1 }}
