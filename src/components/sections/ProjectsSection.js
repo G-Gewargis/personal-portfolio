@@ -31,7 +31,7 @@ export default function ProjectsSection() {
           description="A full-stack Trello clone built with React, Express.js, Node.js, and MongoDB. Features drag-and-drop functionality, user authentication, and responsive design for seamless task management. Served on AWS EC2 (expired due to free-tier limits) with a MongoDB Atlas database."
           tags={["React", "Express.js", "Node.js", "MongoDB", "AWS EC2"]}
           githubLink={"https://github.com/G-Gewargis/Trellofy"}
-          imageUrl={"/projects/trellofy.png"}
+          imageUrl={"/projects/Trellofy.png"}
         />
 
         <ProjectCard
@@ -40,7 +40,7 @@ export default function ProjectsSection() {
           tags={["React", "TMDb API", "Frontend Design"]}
           githubLink={"https://github.com/G-Gewargis/MovieFinder"}
           liveLink={"https://g-gewargis.github.io/MovieFinder/"}
-          imageUrl={"/projects/moviefinder.png"}
+          imageUrl={"/projects/MovieFinder.png"}
         />
 
         <ProjectCard
@@ -48,7 +48,7 @@ export default function ProjectsSection() {
           description="A real-time multi-room chat application built with Node.js, and Socket.io. Features user authentication, room creation, and message persistence. Deployed on AWS EC2 (expired due to free-tier limits)."
           tags={["Node.js", "Socket.io", "AWS EC2"]}
           githubLink={"https://github.com/G-Gewargis/Chat-App"}
-          imageUrl={"/projects/chat-app.png"}
+          imageUrl={"/projects/Chat-App.png"}
         />
         <ProjectCard
           title="NutriScan"
