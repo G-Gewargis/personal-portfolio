@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { fadeIn, slideUp, staggerContainer } from '@/utils/animation';
-import { IconCode, IconPalette, IconDeviceDesktop } from '@tabler/icons-react';
+import { IconCode, IconDatabase, IconCloud } from '@tabler/icons-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -29,20 +29,35 @@ export default function SkillsSection() {
       >
         <SkillCard 
           icon={<IconCode size={32} />}
-          title="Web Development"
-          description="Creating responsive websites using React, Next.js, and modern CSS. Strong focus on performance and clean code."
+          title="Full-Stack Development"
+          description="Building applications end to end with Django, React, and Node.js, from the database schema up to the interface."
         />
         
         <SkillCard 
-          icon={<IconPalette size={32} />}
-          title="UI/UX Design"
-          description="Designing intuitive and beautiful user interfaces with attention to detail and user experience."
+          icon={<IconDatabase size={32} />}
+          title="Backend & Data"
+          description="Designing PostgreSQL and MongoDB schemas and the pipelines that normalize, validate, and reconcile data flowing through them."
         />
         
         <SkillCard 
-          icon={<IconDeviceDesktop size={32} />}
-          title="Frontend Engineering"
-          description="Building interactive, animated interfaces with modern technologies."
+          icon={<IconCloud size={32} />}
+          title="Infrastructure & Deployment"
+          description="Shipping and running services with Docker, Celery, Redis, and AWS, with Pytest coverage behind the changes."
+        />
+      </motion.div>
+
+      {/* Technical Skills */}
+      <motion.div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6" variants={staggerContainer}>
+        <SkillGroup
+          title="Languages"
+          items={["Python", "JavaScript", "SQL", "Java", "C", "C++", "HTML/CSS"]}
+        />
+        <SkillGroup
+          title="Frameworks & Tools"
+          items={[
+            "Django", "React", "Node.js", "Express.js", "Celery", "Redis",
+            "PostgreSQL", "MongoDB", "Docker", "AWS (EC2, S3)", "Git", "Pytest",
+          ]}
         />
       </motion.div>
 
@@ -75,6 +90,31 @@ function SkillCard({ icon, title, description }) {
       </motion.div>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <p className="text-text-secondary">{description}</p>
+    </motion.div>
+  );
+}
+
+function SkillGroup({ title, items }) {
+  return (
+    <motion.div
+      className="p-6 bg-card-bg rounded-xl border border-border-color"
+      whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", borderColor: "rgba(139, 92, 246, 0.5)" }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+      variants={slideUp}
+    >
+      <h3 className="text-xl font-bold mb-4">{title}</h3>
+      <div className="flex flex-wrap gap-2">
+        {items.map((item) => (
+          <motion.span
+            key={item}
+            className="px-3 py-1 text-sm bg-background rounded-full text-text-secondary"
+            whileHover={{ scale: 1.1, backgroundColor: "rgba(139, 92, 246, 0.2)" }}
+          >
+            {item}
+          </motion.span>
+        ))}
+      </div>
     </motion.div>
   );
 }

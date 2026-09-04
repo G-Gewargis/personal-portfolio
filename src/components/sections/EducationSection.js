@@ -41,7 +41,7 @@ export default function EducationSection() {
             <div>
               <h3 className="text-xl font-bold">Washington University in St. Louis</h3>
               <p className="text-text-secondary">Bachelor of Science in Computer Science</p>
-              <p className="text-text-secondary">2024 - 2028</p>
+              <p className="text-text-secondary">Aug 2024 – May 2028</p>
             </div>
           </div>
           <p className="text-text-secondary">

@@ -59,15 +59,16 @@ export default function HeroSection() {
         className="text-xl md:text-3xl text-text-secondary mb-8"
         variants={slideUp}
       >
-        Computer Science Student & Web Developer
+        Computer Science Student & Software Engineer
       </motion.h2>
       
       <motion.p 
         className="text-lg md:text-xl max-w-3xl mx-auto mb-12"
         variants={slideUp}
       >
-        I am currently learning and creating beautiful, responsive websites with smooth animations and modern designs.
-        Studying at Washington University in St. Louis, I am passionate about technology and CS as a whole.
+        I build full-stack products end to end, from Django and React interfaces down to the PostgreSQL, Celery, and
+        Docker infrastructure behind them. I study computer science at Washington University in St. Louis, most recently
+        interned on Oracle Cloud Infrastructure&#39;s Cloud Safety team, and work as a software engineer at Habitat Financial.
       </motion.p>
       
       {/* Social Links */}

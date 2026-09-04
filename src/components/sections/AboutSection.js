@@ -28,7 +28,10 @@ export default function AboutSection() {
         >
           <h3 className="text-xl font-bold mb-4">Who am I?</h3>
           <p className="text-text-secondary mb-4">
-            I&#39;m a passionate Computer Science student with a love for full-stack development. I&#39;ve built several personal and business projects using a wide range of modern technologies and frameworks.
+            I&#39;m a computer science student at Washington University in St. Louis who works mostly on the backend: Django
+            services, PostgreSQL schemas, and the data pipelines that sit between them. I spent summer 2026 at Oracle Cloud
+            Infrastructure on the Cloud Safety team, and I&#39;m the lead engineer on JukeHouse.FM at Habitat Financial, a
+            publishing platform that automates registering a songwriter&#39;s catalog with collection societies.
           </p>
           <p className="text-text-secondary mb-4">
           Outside of coding, I enjoy playing video games, listening to music, skateboarding, playing basketball, going to the gym, and spending time with friends. 
