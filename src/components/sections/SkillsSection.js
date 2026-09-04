@@ -2,9 +2,20 @@
 
 import { motion } from 'framer-motion';
 import { fadeIn, slideUp, staggerContainer } from '@/utils/animation';
-import { IconCode, IconPalette, IconDeviceDesktop } from '@tabler/icons-react';
 import Image from 'next/image';
 import { useState } from 'react';
+
+const TECH_LOGOS = [
+  { name: "React", icon: "/logos/react.svg" },
+  { name: "Python", icon: "/logos/python.svg" },
+  { name: "Java", icon: "/logos/java.svg" },
+  { name: "Tailwind CSS", icon: "/logos/tailwind.svg" },
+  { name: "JavaScript", icon: "/logos/javascript.svg" },
+  { name: "Next.js", icon: "/logos/nextjs.svg" },
+  { name: "Node.js", icon: "/logos/nodejs.svg" },
+  { name: "HTML", icon: "/logos/html.svg" },
+  { name: "CSS", icon: "/logos/css.svg" },
+];
 
 export default function SkillsSection() {
   return (
@@ -20,35 +31,29 @@ export default function SkillsSection() {
         className="text-2xl md:text-3xl font-bold mb-8 text-center"
         variants={slideUp}
       >
-        What I <span className="text-gradient">Do</span>
+        My <span className="text-gradient">Skills</span>
       </motion.h2>
-      
-      <motion.div 
-        className="grid grid-cols-1 md:grid-cols-3 gap-6"
-        variants={staggerContainer}
-      >
-        <SkillCard 
-          icon={<IconCode size={32} />}
-          title="Web Development"
-          description="Creating responsive websites using React, Next.js, and modern CSS. Strong focus on performance and clean code."
-        />
-        
-        <SkillCard 
-          icon={<IconPalette size={32} />}
-          title="UI/UX Design"
-          description="Designing intuitive and beautiful user interfaces with attention to detail and user experience."
-        />
-        
-        <SkillCard 
-          icon={<IconDeviceDesktop size={32} />}
-          title="Frontend Engineering"
-          description="Building interactive, animated interfaces with modern technologies."
+
+      <motion.div variants={staggerContainer}>
+        <SkillGroup
+          title="Technical Skills"
+          groups={[
+            {
+              label: "Languages",
+              items: ["Python", "JavaScript", "SQL", "Java", "C", "C++", "HTML/CSS"],
+            },
+            {
+              label: "Frameworks & Tools",
+              items: [
+                "Django", "React", "Node.js", "Express.js", "Celery", "Redis",
+                "PostgreSQL", "MongoDB", "Docker", "AWS (EC2, S3)", "Git", "Pytest",
+              ],
+            },
+          ]}
         />
       </motion.div>
 
-      {/* Programming Languages Carousel */}
       <div className="mt-12">
-        <h3 className="text-xl font-bold mb-4 text-center">Programming Languages</h3>
         <div className="overflow-hidden rounded-lg border border-border-color">
           <LanguagesCarousel />
         </div>
@@ -57,55 +62,55 @@ export default function SkillsSection() {
   );
 }
 
-function SkillCard({ icon, title, description }) {
+function SkillGroup({ title, groups }) {
   return (
-    <motion.div 
-      className="p-6 bg-card-bg rounded-xl border border-border-color hover:border-accent/50"
+    <motion.div
+      className="p-6 bg-card-bg rounded-xl border border-border-color"
       whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.2)", borderColor: "rgba(139, 92, 246, 0.5)" }}
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
       variants={slideUp}
     >
-      <motion.div 
-        className="text-accent mb-4"
-        whileHover={{ scale: 1.2, rotate: 5 }}
-        transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-      >
-        {icon}
-      </motion.div>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-text-secondary">{description}</p>
+      <h3 className="text-xl font-bold mb-4">{title}</h3>
+      <div className="space-y-5">
+        {groups.map((group) => (
+          <div key={group.label}>
+            <h4 className="text-sm font-bold uppercase tracking-wide text-accent mb-2">{group.label}</h4>
+            <div className="flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <motion.span
+                  key={item}
+                  className="px-3 py-1 text-sm bg-background border border-border-color rounded-full text-text-secondary"
+                  whileHover={{ scale: 1.1, backgroundColor: "rgba(139, 92, 246, 0.2)" }}
+                >
+                  {item}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </motion.div>
   );
 }
 
 function LanguagesCarousel() {
   const [isPaused, setIsPaused] = useState(false);
-  
+
+  // Duplicated so the track can scroll continuously without a visible seam.
+  const track = [...TECH_LOGOS, ...TECH_LOGOS];
+
   return (
     <div className="carousel-container py-8 bg-card-bg">
       <div className={`carousel-track ${isPaused ? 'paused' : ''}`}>
-        {/* First set of logos */}
-        <TechLogo name="React" icon="/logos/react.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="Python" icon="/logos/python.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="Java" icon="/logos/java.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="Tailwind CSS" icon="/logos/tailwind.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="JavaScript" icon="/logos/javascript.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="Next.js" icon="/logos/nextjs.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="Node.js" icon="/logos/nodejs.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="HTML" icon="/logos/html.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="CSS" icon="/logos/css.svg" setIsPaused={setIsPaused} />
-        
-        {/* Duplicated set for continuous scrolling */}
-        <TechLogo name="React" icon="/logos/react.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="Python" icon="/logos/python.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="Java" icon="/logos/java.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="Tailwind CSS" icon="/logos/tailwind.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="JavaScript" icon="/logos/javascript.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="Next.js" icon="/logos/nextjs.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="Node.js" icon="/logos/nodejs.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="HTML" icon="/logos/html.svg" setIsPaused={setIsPaused} />
-        <TechLogo name="CSS" icon="/logos/css.svg" setIsPaused={setIsPaused} />
+        {track.map((tech, index) => (
+          <TechLogo
+            key={`${tech.name}-${index}`}
+            name={tech.name}
+            icon={tech.icon}
+            setIsPaused={setIsPaused}
+          />
+        ))}
       </div>
     </div>
   );

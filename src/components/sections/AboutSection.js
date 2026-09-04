@@ -28,10 +28,15 @@ export default function AboutSection() {
         >
           <h3 className="text-xl font-bold mb-4">Who am I?</h3>
           <p className="text-text-secondary mb-4">
-            I&#39;m a passionate Computer Science student with a love for full-stack development. I&#39;ve built several personal and business projects using a wide range of modern technologies and frameworks.
+            At just the age of three, I stepped into the world of tech by playing Call of Duty with my cousins. I&#39;ve been
+            passionate about it ever since, and it&#39;s why I ended up in software. My work has spanned frontend, backend,
+            safety engineering, chaos engineering, and distributed cloud systems.
           </p>
           <p className="text-text-secondary mb-4">
-          Outside of coding, I enjoy playing video games, listening to music, skateboarding, playing basketball, going to the gym, and spending time with friends. 
+          Outside of coding, I enjoy playing video games, listening to music, skateboarding, playing basketball, going to
+          the gym, and spending time with friends. I&#39;m a big music head and I&#39;ll listen to just about anything, which
+          is part of why building software for the music industry appealed to me. Lately it&#39;s been a lot of Laufey,
+          Phoebe Bridgers, and a band called Petite League!
           </p>
           <div className="grid grid-cols-2 gap-4 mt-6">
             <div>

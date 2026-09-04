@@ -14,23 +14,25 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Georges Gewargis | Portfolio",
-  description: "Personal portfolio of Georges Gewargis, a computer science student and full-stack developer based in Chicago.",
+  description: "Personal portfolio of Georges Gewargis, a computer science student and software engineer based in St. Louis.",
   keywords: [
     "Georges Gewargis",
-    "Web Developer",
+    "Software Engineer",
     "Full Stack Developer",
+    "Django",
     "Next.js",
     "React",
     "Portfolio",
     "Computer Science Student",
+    "St. Louis",
     "Chicago",
   ],
   authors: [{ name: "Georges Gewargis", url: "https://georgesgewargis.com" }],
   creator: "Georges Gewargis",
   openGraph: {
-    title: "Georges Gewargis | Web Developer",
+    title: "Georges Gewargis | Software Engineer",
     description:
-      "Explore projects, skills, and experience from Georges Gewargis, a full-stack developer and CS student at WashU.",
+      "Explore projects, skills, and experience from Georges Gewargis, a software engineer and CS student at WashU.",
     url: "https://georgesgewargis.com",
     siteName: "Georges Gewargis Portfolio",
     images: [
@@ -48,7 +50,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Georges Gewargis | Portfolio",
     description:
-      "Personal portfolio of Georges Gewargis, full-stack developer and CS student.",
+      "Personal portfolio of Georges Gewargis, software engineer and CS student.",
     images: ["/og-image.png"],
   },
 };

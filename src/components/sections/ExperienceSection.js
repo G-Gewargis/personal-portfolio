@@ -24,56 +24,48 @@ export default function ExperienceSection() {
 
       <div className="space-y-8">
         <ExperienceCard
-          logo="https://www.studlife.com/wp-content/themes/student-life-2019/img/logo-studentlife-white.svg"
-          company="Student Life (Studlife Newspaper)"
-          title="Web Development Lead"
-          date="Jan 2026 – Present"
-          description={
-            `• Manage and maintain the newspaper’s website (WordPress, custom PHP)
-• Lead UI redesign to modernize layout and improve UX
-• Implement updates and troubleshoot backend for smooth publishing`
-          }
-          website="https://www.studlife.com/"
-        />
-
-        <ExperienceCard
-          logo="/logos/jukehouse.png"
-          company="JukeHouse Music Publishing"
-          title="Co-Founder & Lead Developer"
-          date="July 2025 - Present"
-          description={
-            `• Lead full-stack development of JukeHouse.fm (Django, PostgreSQL)
-• Built RESTful APIs for royalty tracking and songwriter management
-• Integrated with global music organizations for automated royalty collection`
-          }
-          website="https://jukehouse.fm"
+          logo="/logos/oracle.svg"
+          logoBg="bg-white"
+          company="Oracle"
+          subtitle="Oracle Cloud Infrastructure (OCI)"
+          location="Nashville, TN"
+          roles={[
+            {
+              title: "Software Engineering Intern, Cloud Safety Team",
+              date: "May 2026 – Aug 2026",
+              description:
+                `• Built a Django feature for an internal hazard-tracking tool that renders weekly reports into customizable Slack Block Kit messages for executives, with payload validation, three checks before any live post, and 86 unit tests
+• Reproduced a bug in an internal deployment system that could leave two copies of an application running after a deploy, then wrote the after-action report proposing a fix and a way to detect it automatically
+• Owned triage of 13 infrastructure hazards across more than 10 OCI service teams, chasing each one down to a named owner and evidence that the fix actually worked
+• Prototyped a pipeline that scraped and de-identified 1M+ public Oracle Forums posts for an internal harm-review tool, classifying them by harm type and severity to find problems customers never filed tickets about
+• Added the harm-review tool's first accessibility support, testing keyboard and screen-reader flows in a CLI browser`
+            }
+          ]}
+          links={["https://www.oracle.com/cloud/"]}
         />
 
         <ExperienceCard
           logo="/logos/habitat-financial.jpeg"
           company="Habitat Financial"
-          title="Software Development Intern"
-          date="June 2025 - August 2025"
-          description={
-            `• Developed full-stack features for royalty processing (Django, PostgreSQL, HTMX)
-• Built responsive interfaces for artist and revenue management
-• Implemented data pipelines for complex royalty calculations
-• Contributed to API integration with music platforms and payment systems`
-          }
-          website={"https://www.habitat.financial/"}
-        />
-
-        <ExperienceCard
-          logo="/logos/bliss-glenview.jpg"
-          company="Bliss Salon of Glenview"
-          title="Web Developer"
-          date="April 2025 - Present"
-          description={
-            `• Designed and built responsive salon website (React, Vite, SCSS)
-• Optimized SEO with sitemap, robots.txt, and structured data
-• Integrated custom DNS/SSL for secure deployment`
-          }
-          website="https://blissglenview.com"
+          location="St. Louis, MO"
+          roles={[
+            {
+              title: "Software Engineer",
+              date: "Jul 2025 – Present",
+              description:
+                `• Lead engineer on JukeHouse.FM, a Django/PostgreSQL publishing platform that automates registering a songwriter's catalog with collection societies instead of filing with each one by hand
+• Registered JukeHouse as a publisher with ASCAP, BMI, and The MLC, then built its CWR 2.1/3.0 generator and validator that packages each work into the format those societies require
+• Designed its deployment architecture: Docker on Railway with PostgreSQL, Redis, and Celery for asynchronous royalty jobs, and S3-backed media storage`
+            },
+            {
+              title: "Software Development Intern",
+              date: "May 2025 – Aug 2025",
+              description:
+                `• Developed full-stack interfaces (Django, PostgreSQL, HTMX, JavaScript) for album/artist management, revenue tracking, and financial reporting for 120+ client teams across 486K+ track records
+• Implemented royalty pipelines that normalize territories, stores, and currencies from raw CSV files, then apply deal terms, splits, and tax to produce artist earnings across 5,000+ statements to date`
+            }
+          ]}
+          links={["https://www.habitat.financial/", "https://jukehouse.fm"]}
         />
       </div>
 
@@ -81,9 +73,7 @@ export default function ExperienceSection() {
   );
 }
 
-function ExperienceCard({ logo, title, company, date, description, website }) {
-  // Add a red background for the Studlife SVG logo only
-  const isStudlifeLogo = logo === "https://www.studlife.com/wp-content/themes/student-life-2019/img/logo-studentlife-white.svg";
+function ExperienceCard({ logo, company, subtitle, location, roles, links, logoBg = "bg-accent" }) {
   return (
     <motion.div
       className="p-6 bg-card-bg rounded-xl border border-border-color"
@@ -92,7 +82,7 @@ function ExperienceCard({ logo, title, company, date, description, website }) {
       whileTap={{ scale: 0.98 }}
     >
       <div className="flex items-center gap-4 mb-4">
-        <div className={`w-20 h-20 flex items-center justify-center text-background ${isStudlifeLogo ? 'bg-red-600' : 'bg-accent'}`}>
+        <div className={`w-20 h-20 shrink-0 flex items-center justify-center text-background ${logoBg}`}>
           <Image
             src={logo}
             alt={company}
@@ -102,18 +92,36 @@ function ExperienceCard({ logo, title, company, date, description, website }) {
           />
         </div>
         <div>
-          <h3 className="text-xl font-bold">{title} at {company}</h3>
-          <p className="text-text-secondary">{date}</p>
+          <h3 className="text-xl font-bold">{company}</h3>
+          {subtitle && <p className="text-text-secondary">{subtitle}</p>}
+          {location && <p className="text-text-secondary">{location}</p>}
         </div>
       </div>
-      <p className="text-text-secondary mb-4 whitespace-pre-line">{description}</p>
 
-      {website && (
-        <p className="text-text-secondary">
-          <a href={website} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
-            {new URL(website).hostname}
-          </a>
-        </p>
+      <div className="space-y-4 mb-4">
+        {roles.map((role, index) => (
+          <div key={index}>
+            <h4 className="font-bold">{role.title}</h4>
+            <p className="text-text-secondary mb-2">{role.date}</p>
+            <p className="text-text-secondary whitespace-pre-line">{role.description}</p>
+          </div>
+        ))}
+      </div>
+
+      {links && links.length > 0 && (
+        <div className="flex flex-wrap gap-4">
+          {links.map((href) => (
+            <a
+              key={href}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
+              {new URL(href).hostname.replace(/^www\./, '')}
+            </a>
+          ))}
+        </div>
       )}
     </motion.div>
   );

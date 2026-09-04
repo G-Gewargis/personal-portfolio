@@ -30,11 +30,11 @@ export default function HeroSection() {
               transition={{ delay: 0.5, duration: 0.5 }}
             >
               <Image
-                src="/logos/hero-img.jpeg"
+                src="/logos/hero-photo.jpeg"
                 alt="Georges Gewargis"
                 fill={true}
                 sizes="(max-width: 768px) 100vw, 176px"
-                className="object-cover"
+                className="object-cover scale-[1.35] origin-[50%_42%]"
               />
             </motion.div>
           </div>
@@ -59,15 +59,15 @@ export default function HeroSection() {
         className="text-xl md:text-3xl text-text-secondary mb-8"
         variants={slideUp}
       >
-        Computer Science Student & Web Developer
+        Computer Science Student & Software Engineer
       </motion.h2>
       
       <motion.p 
         className="text-lg md:text-xl max-w-3xl mx-auto mb-12"
         variants={slideUp}
       >
-        I am currently learning and creating beautiful, responsive websites with smooth animations and modern designs.
-        Studying at Washington University in St. Louis, I am passionate about technology and CS as a whole.
+        I&#39;m a CS junior at WashU. I love music, so I write software for the music industry, currently at Habitat
+        Financial. This past summer I was at Oracle on the Cloud Safety team.
       </motion.p>
       
       {/* Social Links */}

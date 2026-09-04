@@ -41,11 +41,11 @@ export default function EducationSection() {
             <div>
               <h3 className="text-xl font-bold">Washington University in St. Louis</h3>
               <p className="text-text-secondary">Bachelor of Science in Computer Science</p>
-              <p className="text-text-secondary">2024 - 2028</p>
+              <p className="text-text-secondary">Aug 2024 – May 2028</p>
             </div>
           </div>
           <p className="text-text-secondary">
-            Relevant Coursework: Data Structures & Algorithms, Rapid Prototype Development & Creative Programming, Web Development, Discrete Math, Calculus 3
+            Relevant Coursework: Data Structures & Algorithms, Analysis of Algorithms, Programming Systems & Languages, Parallel & Concurrent Programming, Cloud Computing with Big Data Applications, Rapid Prototype Development & Creative Programming, Logic & Discrete Mathematics
           </p>
         </motion.div>
       </div>
