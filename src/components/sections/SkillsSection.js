@@ -80,7 +80,7 @@ function SkillGroup({ title, groups }) {
               {group.items.map((item) => (
                 <motion.span
                   key={item}
-                  className="px-3 py-1 text-sm bg-background rounded-full text-text-secondary"
+                  className="px-3 py-1 text-sm bg-background border border-border-color rounded-full text-text-secondary"
                   whileHover={{ scale: 1.1, backgroundColor: "rgba(139, 92, 246, 0.2)" }}
                 >
                   {item}
