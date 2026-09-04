@@ -37,10 +37,18 @@ export default function SkillsSection() {
       <motion.div variants={staggerContainer}>
         <SkillGroup
           title="Technical Skills"
-          items={[
-            "Python", "JavaScript", "SQL", "Java", "C", "C++", "HTML/CSS",
-            "Django", "React", "Node.js", "Express.js", "Celery", "Redis",
-            "PostgreSQL", "MongoDB", "Docker", "AWS (EC2, S3)", "Git", "Pytest",
+          groups={[
+            {
+              label: "Languages",
+              items: ["Python", "JavaScript", "SQL", "Java", "C", "C++", "HTML/CSS"],
+            },
+            {
+              label: "Frameworks & Tools",
+              items: [
+                "Django", "React", "Node.js", "Express.js", "Celery", "Redis",
+                "PostgreSQL", "MongoDB", "Docker", "AWS (EC2, S3)", "Git", "Pytest",
+              ],
+            },
           ]}
         />
       </motion.div>
@@ -54,7 +62,7 @@ export default function SkillsSection() {
   );
 }
 
-function SkillGroup({ title, items }) {
+function SkillGroup({ title, groups }) {
   return (
     <motion.div
       className="p-6 bg-card-bg rounded-xl border border-border-color"
@@ -64,15 +72,22 @@ function SkillGroup({ title, items }) {
       variants={slideUp}
     >
       <h3 className="text-xl font-bold mb-4">{title}</h3>
-      <div className="flex flex-wrap gap-2">
-        {items.map((item) => (
-          <motion.span
-            key={item}
-            className="px-3 py-1 text-sm bg-background rounded-full text-text-secondary"
-            whileHover={{ scale: 1.1, backgroundColor: "rgba(139, 92, 246, 0.2)" }}
-          >
-            {item}
-          </motion.span>
+      <div className="space-y-5">
+        {groups.map((group) => (
+          <div key={group.label}>
+            <h4 className="text-sm font-bold uppercase tracking-wide text-accent mb-2">{group.label}</h4>
+            <div className="flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <motion.span
+                  key={item}
+                  className="px-3 py-1 text-sm bg-background rounded-full text-text-secondary"
+                  whileHover={{ scale: 1.1, backgroundColor: "rgba(139, 92, 246, 0.2)" }}
+                >
+                  {item}
+                </motion.span>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </motion.div>

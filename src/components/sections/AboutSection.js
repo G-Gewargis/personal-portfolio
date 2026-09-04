@@ -28,14 +28,16 @@ export default function AboutSection() {
         >
           <h3 className="text-xl font-bold mb-4">Who am I?</h3>
           <p className="text-text-secondary mb-4">
-            I&#39;ve been into technology since I was about three, when my cousins let me play Call of Duty with them.
-            It&#39;s been the thing I care about ever since, and it&#39;s why I ended up in software. My work leans backend,
-            but I&#39;ve done plenty of frontend too.
+            At just the age of three, I stepped into the world of tech by playing Call of Duty with my cousins. I&#39;ve been
+            passionate about it ever since, and it&#39;s why I ended up in software. My work has spanned frontend, backend,
+            safety engineering, chaos engineering, and distributed cloud systems at Oracle. I care about computer science
+            as a discipline, not just web development.
           </p>
           <p className="text-text-secondary mb-4">
           Outside of coding, I enjoy playing video games, listening to music, skateboarding, playing basketball, going to
           the gym, and spending time with friends. I&#39;m a big music head and I&#39;ll listen to just about anything, which
-          is part of why building software for the music industry appealed to me.
+          is part of why building software for the music industry appealed to me. Lately it&#39;s been a lot of Laufey,
+          Phoebe Bridgers, and a band called Petite League.
           </p>
           <div className="grid grid-cols-2 gap-4 mt-6">
             <div>

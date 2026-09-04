@@ -30,11 +30,11 @@ export default function HeroSection() {
               transition={{ delay: 0.5, duration: 0.5 }}
             >
               <Image
-                src="/logos/hero-img.jpeg"
+                src="/logos/hero-photo.jpeg"
                 alt="Georges Gewargis"
                 fill={true}
                 sizes="(max-width: 768px) 100vw, 176px"
-                className="object-cover"
+                className="object-cover scale-[1.35] origin-[50%_42%]"
               />
             </motion.div>
           </div>
