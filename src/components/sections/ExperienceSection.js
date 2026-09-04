@@ -118,7 +118,7 @@ function ExperienceCard({ logo, company, subtitle, location, roles, links, logoB
               rel="noopener noreferrer"
               className="text-accent hover:underline"
             >
-              {new URL(href).hostname}
+              {new URL(href).hostname.replace(/^www\./, '')}
             </a>
           ))}
         </div>
