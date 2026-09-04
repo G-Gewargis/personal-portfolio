@@ -10,7 +10,8 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    website: '' // honeypot, hidden from real users
   });
   const [formStatus, setFormStatus] = useState({
     type: '', // 'success', 'error', 'submitting', or ''
@@ -156,6 +157,20 @@ export default function ContactSection() {
           )}
           
           <form className="space-y-4" onSubmit={handleSubmit}>
+            {/* Honeypot: positioned off-screen rather than display:none, which
+                more bots know to skip. Anything submitted here is discarded. */}
+            <div className="absolute left-[-9999px]" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                value={formData.website}
+                onChange={handleInputChange}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div>
               <label htmlFor="name" className="block text-text-secondary mb-2">Name</label>
               <motion.input 
