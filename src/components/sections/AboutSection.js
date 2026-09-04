@@ -28,10 +28,9 @@ export default function AboutSection() {
         >
           <h3 className="text-xl font-bold mb-4">Who am I?</h3>
           <p className="text-text-secondary mb-4">
-            I&#39;m a computer science student at Washington University in St. Louis who works mostly on the backend: Django
-            services, PostgreSQL schemas, and the data pipelines that sit between them. I spent summer 2026 at Oracle Cloud
-            Infrastructure on the Cloud Safety team, and I&#39;m the lead engineer on JukeHouse.FM at Habitat Financial, a
-            publishing platform that automates registering a songwriter&#39;s catalog with collection societies.
+            I&#39;m a junior at WashU studying computer science. I like the kind of problem where the hard part isn&#39;t the
+            code — most of JukeHouse.FM was figuring out how music royalties actually work before any of it could be
+            automated. My work leans backend, but I&#39;d rather follow a problem across the stack than sit in one layer of it.
           </p>
           <p className="text-text-secondary mb-4">
           Outside of coding, I enjoy playing video games, listening to music, skateboarding, playing basketball, going to the gym, and spending time with friends. 

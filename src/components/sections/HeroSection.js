@@ -66,9 +66,9 @@ export default function HeroSection() {
         className="text-lg md:text-xl max-w-3xl mx-auto mb-12"
         variants={slideUp}
       >
-        I build full-stack products end to end, from Django and React interfaces down to the PostgreSQL, Celery, and
-        Docker infrastructure behind them. I study computer science at Washington University in St. Louis, most recently
-        interned on Oracle Cloud Infrastructure&#39;s Cloud Safety team, and work as a software engineer at Habitat Financial.
+        These days I&#39;m mostly building JukeHouse.FM — software that registers a songwriter&#39;s catalog with collection
+        societies instead of making them file with each one by hand. This past summer I was at Oracle on the Cloud Safety
+        team. I&#39;m at WashU through 2028.
       </motion.p>
       
       {/* Social Links */}

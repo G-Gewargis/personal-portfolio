@@ -30,19 +30,19 @@ export default function SkillsSection() {
         <SkillCard 
           icon={<IconCode size={32} />}
           title="Full-Stack Development"
-          description="Building applications end to end with Django, React, and Node.js, from the database schema up to the interface."
+          description="I've built the whole thing more than once — Django or Node on the back, React on the front, and all the wiring in between. I don't really have a favorite layer."
         />
         
         <SkillCard 
           icon={<IconDatabase size={32} />}
           title="Backend & Data"
-          description="Designing PostgreSQL and MongoDB schemas and the pipelines that normalize, validate, and reconcile data flowing through them."
+          description="Most of what I work on touches money or legal filings, so close enough doesn't cut it. That means schema design, validation, and a lot of unglamorous checks that catch bad data before anyone sees it."
         />
         
         <SkillCard 
           icon={<IconCloud size={32} />}
           title="Infrastructure & Deployment"
-          description="Shipping and running services with Docker, Celery, Redis, and AWS, with Pytest coverage behind the changes."
+          description="I like knowing how my code actually runs. Docker, Celery, Redis, Postgres, a box on AWS or Railway — I'd rather set it up myself than hand it off and hope."
         />
       </motion.div>
 
