@@ -67,23 +67,6 @@ export default function ExperienceSection() {
           ]}
           links={["https://www.habitat.financial/", "https://jukehouse.fm"]}
         />
-
-        <ExperienceCard
-          logo="/logos/bliss-glenview.jpg"
-          company="Bliss Salon of Glenview"
-          location="Glenview, IL"
-          roles={[
-            {
-              title: "Web Developer",
-              date: "Apr 2025 – Present",
-              description:
-                `• Designed and built responsive salon website (React, Vite, SCSS)
-• Optimized SEO with sitemap, robots.txt, and structured data
-• Integrated custom DNS/SSL for secure deployment`
-            }
-          ]}
-          links={["https://blissglenview.com"]}
-        />
       </div>
 
     </motion.section>
