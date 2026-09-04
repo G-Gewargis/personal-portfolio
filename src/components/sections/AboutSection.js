@@ -30,14 +30,13 @@ export default function AboutSection() {
           <p className="text-text-secondary mb-4">
             At just the age of three, I stepped into the world of tech by playing Call of Duty with my cousins. I&#39;ve been
             passionate about it ever since, and it&#39;s why I ended up in software. My work has spanned frontend, backend,
-            safety engineering, chaos engineering, and distributed cloud systems at Oracle. I care about computer science
-            as a discipline, not just web development.
+            safety engineering, chaos engineering, and distributed cloud systems.
           </p>
           <p className="text-text-secondary mb-4">
           Outside of coding, I enjoy playing video games, listening to music, skateboarding, playing basketball, going to
           the gym, and spending time with friends. I&#39;m a big music head and I&#39;ll listen to just about anything, which
           is part of why building software for the music industry appealed to me. Lately it&#39;s been a lot of Laufey,
-          Phoebe Bridgers, and a band called Petite League.
+          Phoebe Bridgers, and a band called Petite League!
           </p>
           <div className="grid grid-cols-2 gap-4 mt-6">
             <div>
