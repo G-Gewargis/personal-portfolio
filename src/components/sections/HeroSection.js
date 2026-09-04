@@ -66,9 +66,8 @@ export default function HeroSection() {
         className="text-lg md:text-xl max-w-3xl mx-auto mb-12"
         variants={slideUp}
       >
-        These days I&#39;m mostly building JukeHouse.FM — software that registers a songwriter&#39;s catalog with collection
-        societies instead of making them file with each one by hand. This past summer I was at Oracle on the Cloud Safety
-        team. I&#39;m at WashU through 2028.
+        I&#39;m a CS junior at WashU. I love music, so I write software for the music industry, currently at Habitat
+        Financial. This past summer I was at Oracle on the Cloud Safety team.
       </motion.p>
       
       {/* Social Links */}

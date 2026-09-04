@@ -28,12 +28,14 @@ export default function AboutSection() {
         >
           <h3 className="text-xl font-bold mb-4">Who am I?</h3>
           <p className="text-text-secondary mb-4">
-            I&#39;m a junior at WashU studying computer science. I like the kind of problem where the hard part isn&#39;t the
-            code — most of JukeHouse.FM was figuring out how music royalties actually work before any of it could be
-            automated. My work leans backend, but I&#39;d rather follow a problem across the stack than sit in one layer of it.
+            I&#39;ve been into technology since I was about three, when my cousins let me play Call of Duty with them.
+            It&#39;s been the thing I care about ever since, and it&#39;s why I ended up in software. My work leans backend,
+            but I&#39;ve done plenty of frontend too.
           </p>
           <p className="text-text-secondary mb-4">
-          Outside of coding, I enjoy playing video games, listening to music, skateboarding, playing basketball, going to the gym, and spending time with friends. 
+          Outside of coding, I enjoy playing video games, listening to music, skateboarding, playing basketball, going to
+          the gym, and spending time with friends. I&#39;m a big music head and I&#39;ll listen to just about anything, which
+          is part of why building software for the music industry appealed to me.
           </p>
           <div className="grid grid-cols-2 gap-4 mt-6">
             <div>
