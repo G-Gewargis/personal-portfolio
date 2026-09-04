@@ -45,7 +45,7 @@ export default function EducationSection() {
             </div>
           </div>
           <p className="text-text-secondary">
-            Relevant Coursework: Data Structures & Algorithms, Rapid Prototype Development & Creative Programming, Web Development, Discrete Math, Calculus 3
+            Relevant Coursework: Data Structures & Algorithms, Analysis of Algorithms, Programming Systems & Languages, Parallel & Concurrent Programming, Cloud Computing with Big Data Applications, Rapid Prototype Development & Creative Programming, Logic & Discrete Mathematics
           </p>
         </motion.div>
       </div>
